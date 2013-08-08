@@ -1,0 +1,36 @@
+# Extracted from https://github.com/ulrich/macaron-factory/blob/master/.gitignore
+# Ignore all dotfiles...
+.*
+# except for .gitignore
+!.gitignore
+
+# Ignore Play! working directory #
+db
+eclipse
+lib
+log/*.log
+logs
+modules
+precompiled
+tmp
+test-result
+server.pid
+modules
+.classpath
+.project
+target
+.settings
+.checkstyle
+
+#IntelliJ
+*.iml
+*.ipr
+*.iws
+.idea/
+*.log
+
+plugins/logging/commands.pyc
+plugins/mailer/commands.pyc
+plugins/meetings/commands.pyc
+plugins/press/commands.pyc
+public/js/bootbox-v3.2.0/tests/*
