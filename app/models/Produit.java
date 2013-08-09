@@ -1,188 +1,331 @@
-/***********************************************************************
+package models; /***********************************************************************
  * Module:  Produit.java
  * Author:  antoi_000
  * Purpose: Defines the Class Produit
  ***********************************************************************/
 
-import java.util.*;
+import play.db.jpa.Model;
 
-/** @pdOid 16c48530-f06e-43f4-a5bc-9b7508f68d08 */
-public class Produit {
-   /** @pdOid 743e4b05-d21b-4068-a956-bbd19fd51e7b */
-   public long proId;
-   /** @pdOid 50ed8e62-4f8c-4af0-8a77-1375c911d41e */
-   public java.lang.String proNom;
-   /** @pdOid 4dd5377e-7995-49d0-8c36-b3b6af34140d */
-   public java.lang.String proReference;
-   /** @pdOid 97410917-5f5e-411c-acb7-dd64fd6df1c4 */
-   public java.lang.String proUnite;
-   /** @pdOid 9082b14c-a528-470f-aba1-af9a7c2160d3 */
-   public float proQuantiteStock = 0;
-   /** @pdOid 5cf660e6-163c-4e71-9043-6c15e8d7b1ba */
-   public float proSeuilQteMin = 0;
-   /** @pdOid f7b000ee-97b3-4da2-b91a-d0d9c829fa29 */
-   public float proSeuilQteMax = 0;
-   /** @pdOid 292f9076-58b2-42de-8ce8-0213335ba556 */
-   public float proQteMaxEmp = 0;
-   /** @pdOid 045ed1f9-92f5-429f-84ea-5c597d901592 */
-   public float proPrixUnitaire = 0;
-   /** @pdOid 00551139-9964-47ec-a2f8-d5c32174aa8e */
-   public java.lang.String proCouleur;
-   /** @pdOid 00a6c0f8-63c9-4196-81c3-7064a7aa9937 */
-   public boolean proActif = 1;
-   
-   public java.util.Collection compositionCommande;
-   /** @pdRoleInfo migr=no name=Reception assc=recPro coll=java.util.Collection impl=java.util.HashSet mult=0..* side=A */
-   public java.util.Collection<Reception> reception;
-   /** @pdRoleInfo migr=no name=Fabrication assc=fabPro coll=java.util.Collection impl=java.util.HashSet mult=0..* side=A */
-   public java.util.Collection<Fabrication> fabrication;
-   /** @pdRoleInfo migr=no name=Lot assc=proComposeLot coll=java.util.Collection impl=java.util.HashSet mult=0..* side=A */
-   public java.util.Collection<Lot> lot;
-   
-   
-   /** @pdGenerated default getter */
-   public java.util.Collection<Reception> getReception() {
-      if (reception == null)
-         reception = new java.util.HashSet<Reception>();
-      return reception;
-   }
-   
-   /** @pdGenerated default iterator getter */
-   public java.util.Iterator getIteratorReception() {
-      if (reception == null)
-         reception = new java.util.HashSet<Reception>();
-      return reception.iterator();
-   }
-   
-   /** @pdGenerated default setter
-     * @param newReception */
-   public void setReception(java.util.Collection<Reception> newReception) {
-      removeAllReception();
-      for (java.util.Iterator iter = newReception.iterator(); iter.hasNext();)
-         addReception((Reception)iter.next());
-   }
-   
-   /** @pdGenerated default add
-     * @param newReception */
-   public void addReception(Reception newReception) {
-      if (newReception == null)
-         return;
-      if (this.reception == null)
-         this.reception = new java.util.HashSet<Reception>();
-      if (!this.reception.contains(newReception))
-         this.reception.add(newReception);
-   }
-   
-   /** @pdGenerated default remove
-     * @param oldReception */
-   public void removeReception(Reception oldReception) {
-      if (oldReception == null)
-         return;
-      if (this.reception != null)
-         if (this.reception.contains(oldReception))
-            this.reception.remove(oldReception);
-   }
-   
-   /** @pdGenerated default removeAll */
-   public void removeAllReception() {
-      if (reception != null)
-         reception.clear();
-   }
-   /** @pdGenerated default getter */
-   public java.util.Collection<Fabrication> getFabrication() {
-      if (fabrication == null)
-         fabrication = new java.util.HashSet<Fabrication>();
-      return fabrication;
-   }
-   
-   /** @pdGenerated default iterator getter */
-   public java.util.Iterator getIteratorFabrication() {
-      if (fabrication == null)
-         fabrication = new java.util.HashSet<Fabrication>();
-      return fabrication.iterator();
-   }
-   
-   /** @pdGenerated default setter
-     * @param newFabrication */
-   public void setFabrication(java.util.Collection<Fabrication> newFabrication) {
-      removeAllFabrication();
-      for (java.util.Iterator iter = newFabrication.iterator(); iter.hasNext();)
-         addFabrication((Fabrication)iter.next());
-   }
-   
-   /** @pdGenerated default add
-     * @param newFabrication */
-   public void addFabrication(Fabrication newFabrication) {
-      if (newFabrication == null)
-         return;
-      if (this.fabrication == null)
-         this.fabrication = new java.util.HashSet<Fabrication>();
-      if (!this.fabrication.contains(newFabrication))
-         this.fabrication.add(newFabrication);
-   }
-   
-   /** @pdGenerated default remove
-     * @param oldFabrication */
-   public void removeFabrication(Fabrication oldFabrication) {
-      if (oldFabrication == null)
-         return;
-      if (this.fabrication != null)
-         if (this.fabrication.contains(oldFabrication))
-            this.fabrication.remove(oldFabrication);
-   }
-   
-   /** @pdGenerated default removeAll */
-   public void removeAllFabrication() {
-      if (fabrication != null)
-         fabrication.clear();
-   }
-   /** @pdGenerated default getter */
-   public java.util.Collection<Lot> getLot() {
-      if (lot == null)
-         lot = new java.util.HashSet<Lot>();
-      return lot;
-   }
-   
-   /** @pdGenerated default iterator getter */
-   public java.util.Iterator getIteratorLot() {
-      if (lot == null)
-         lot = new java.util.HashSet<Lot>();
-      return lot.iterator();
-   }
-   
-   /** @pdGenerated default setter
-     * @param newLot */
-   public void setLot(java.util.Collection<Lot> newLot) {
-      removeAllLot();
-      for (java.util.Iterator iter = newLot.iterator(); iter.hasNext();)
-         addLot((Lot)iter.next());
-   }
-   
-   /** @pdGenerated default add
-     * @param newLot */
-   public void addLot(Lot newLot) {
-      if (newLot == null)
-         return;
-      if (this.lot == null)
-         this.lot = new java.util.HashSet<Lot>();
-      if (!this.lot.contains(newLot))
-         this.lot.add(newLot);
-   }
-   
-   /** @pdGenerated default remove
-     * @param oldLot */
-   public void removeLot(Lot oldLot) {
-      if (oldLot == null)
-         return;
-      if (this.lot != null)
-         if (this.lot.contains(oldLot))
-            this.lot.remove(oldLot);
-   }
-   
-   /** @pdGenerated default removeAll */
-   public void removeAllLot() {
-      if (lot != null)
-         lot.clear();
-   }
+import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import java.util.List;
 
+@Entity
+public class Produit extends Model{
+
+    private String nom;
+    private String reference;
+    private String unite;
+    private float quantiteStock;
+    private float seuilQteMin;
+    private float seuilQteMax;
+    private float qteMaxEmp;
+    private float prixUnitaire;
+    private String couleur;
+    private boolean actif;
+
+    @ManyToMany
+    private List<Commande> commandes;
+
+    @OneToMany
+    private List<Reception> reception;
+
+    @OneToMany
+    private List<Fabrication> fabrication;
+
+    @OneToMany
+    private List<Lot> lot;
+
+    public Produit(String nom, String reference, String unite, float quantiteStock, float seuilQteMin,
+                   float seuilQteMax, float qteMaxEmp, float prixUnitaire, String couleur,
+                   boolean actif, List<Commande> commandes,
+                   List<Reception> reception, List<Fabrication> fabrication, List<Lot> lot) {
+        this.nom = nom;
+        this.reference = reference;
+        this.unite = unite;
+        this.quantiteStock = quantiteStock;
+        this.seuilQteMin = seuilQteMin;
+        this.seuilQteMax = seuilQteMax;
+        this.qteMaxEmp = qteMaxEmp;
+        this.prixUnitaire = prixUnitaire;
+        this.couleur = couleur;
+        this.actif = actif;
+        this.commandes = commandes;
+        this.reception = reception;
+        this.fabrication = fabrication;
+        this.lot = lot;
+    }
+
+    /**
+     * Sets new qteMaxEmp.
+     *
+     * @param qteMaxEmp New value of qteMaxEmp.
+     */
+    public void setQteMaxEmp(float qteMaxEmp) {
+        this.qteMaxEmp = qteMaxEmp;
+    }
+
+    /**
+     * Gets reference.
+     *
+     * @return Value of reference.
+     */
+    public String getReference() {
+        return reference;
+    }
+
+    /**
+     * Sets new quantiteStock.
+     *
+     * @param quantiteStock New value of quantiteStock.
+     */
+    public void setQuantiteStock(float quantiteStock) {
+        this.quantiteStock = quantiteStock;
+    }
+
+    /**
+     * Gets couleur.
+     *
+     * @return Value of couleur.
+     */
+    public String getCouleur() {
+        return couleur;
+    }
+
+    /**
+     * Sets new seuilQteMin.
+     *
+     * @param seuilQteMin New value of seuilQteMin.
+     */
+    public void setSeuilQteMin(float seuilQteMin) {
+        this.seuilQteMin = seuilQteMin;
+    }
+
+    /**
+     * Gets seuilQteMax.
+     *
+     * @return Value of seuilQteMax.
+     */
+    public float getSeuilQteMax() {
+        return seuilQteMax;
+    }
+
+    /**
+     * Gets lot.
+     *
+     * @return Value of lot.
+     */
+    public List<Lot> getLot() {
+        return lot;
+    }
+
+    /**
+     * Gets commandes.
+     *
+     * @return Value of commandes.
+     */
+    public List<Commande> getCommandes() {
+        return commandes;
+    }
+
+    /**
+     * Sets new reception.
+     *
+     * @param reception New value of reception.
+     */
+    public void setReception(List<Reception> reception) {
+        this.reception = reception;
+    }
+
+    /**
+     * Sets new prixUnitaire.
+     *
+     * @param prixUnitaire New value of prixUnitaire.
+     */
+    public void setPrixUnitaire(float prixUnitaire) {
+        this.prixUnitaire = prixUnitaire;
+    }
+
+    /**
+     * Gets seuilQteMin.
+     *
+     * @return Value of seuilQteMin.
+     */
+    public float getSeuilQteMin() {
+        return seuilQteMin;
+    }
+
+    /**
+     * Sets new lot.
+     *
+     * @param lot New value of lot.
+     */
+    public void setLot(List<Lot> lot) {
+        this.lot = lot;
+    }
+
+    /**
+     * Sets new nom.
+     *
+     * @param nom New value of nom.
+     */
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    /**
+     * Sets new reference.
+     *
+     * @param reference New value of reference.
+     */
+    public void setReference(String reference) {
+        this.reference = reference;
+    }
+
+    /**
+     * Sets new fabrication.
+     *
+     * @param fabrication New value of fabrication.
+     */
+    public void setFabrication(List<Fabrication> fabrication) {
+        this.fabrication = fabrication;
+    }
+
+    /**
+     * Gets nom.
+     *
+     * @return Value of nom.
+     */
+    public String getNom() {
+        return nom;
+    }
+
+    /**
+     * Gets unite.
+     *
+     * @return Value of unite.
+     */
+    public String getUnite() {
+        return unite;
+    }
+
+    /**
+     * Sets new couleur.
+     *
+     * @param couleur New value of couleur.
+     */
+    public void setCouleur(String couleur) {
+        this.couleur = couleur;
+    }
+
+    /**
+     * Sets new commandes.
+     *
+     * @param commandes New value of commandes.
+     */
+    public void setCommandes(List<Commande> commandes) {
+        this.commandes = commandes;
+    }
+
+    /**
+     * Gets prixUnitaire.
+     *
+     * @return Value of prixUnitaire.
+     */
+    public float getPrixUnitaire() {
+        return prixUnitaire;
+    }
+
+    /**
+     * Sets new seuilQteMax.
+     *
+     * @param seuilQteMax New value of seuilQteMax.
+     */
+    public void setSeuilQteMax(float seuilQteMax) {
+        this.seuilQteMax = seuilQteMax;
+    }
+
+    /**
+     * Gets quantiteStock.
+     *
+     * @return Value of quantiteStock.
+     */
+    public float getQuantiteStock() {
+        return quantiteStock;
+    }
+
+    /**
+     * Gets reception.
+     *
+     * @return Value of reception.
+     */
+    public List<Reception> getReception() {
+        return reception;
+    }
+
+    /**
+     * Gets fabrication.
+     *
+     * @return Value of fabrication.
+     */
+    public List<Fabrication> getFabrication() {
+        return fabrication;
+    }
+
+    /**
+     * Sets new actif.
+     *
+     * @param actif New value of actif.
+     */
+    public void setActif(boolean actif) {
+        this.actif = actif;
+    }
+
+    /**
+     * Gets qteMaxEmp.
+     *
+     * @return Value of qteMaxEmp.
+     */
+    public float getQteMaxEmp() {
+        return qteMaxEmp;
+    }
+
+    /**
+     * Gets actif.
+     *
+     * @return Value of actif.
+     */
+    public boolean isActif() {
+        return actif;
+    }
+
+    /**
+     * Sets new unite.
+     *
+     * @param unite New value of unite.
+     */
+    public void setUnite(String unite) {
+        this.unite = unite;
+    }
+
+    @Override
+    public String toString() {
+        return "Produit{" +
+                "nom='" + nom + '\'' +
+                ", reference='" + reference + '\'' +
+                ", unite='" + unite + '\'' +
+                ", quantiteStock=" + quantiteStock +
+                ", seuilQteMin=" + seuilQteMin +
+                ", seuilQteMax=" + seuilQteMax +
+                ", qteMaxEmp=" + qteMaxEmp +
+                ", prixUnitaire=" + prixUnitaire +
+                ", couleur='" + couleur + '\'' +
+                ", actif=" + actif +
+                ", commandes=" + commandes +
+                ", reception=" + reception +
+                ", fabrication=" + fabrication +
+                ", lot=" + lot +
+                '}';
+    }
 }

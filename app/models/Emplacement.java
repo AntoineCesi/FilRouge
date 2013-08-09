@@ -1,94 +1,151 @@
-package models;
-
-/***********************************************************************
+package models; /***********************************************************************
  * Module:  Emplacement.java
- * Author:  antoine
+ * Author:  antoi_000
  * Purpose: Defines the Class Emplacement
  ***********************************************************************/
 
-import java.util.*;
+import play.db.jpa.Model;
 
-public class Emplacement {
-   private long id;
-   private java.lang.String batiment;
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
+
+@Entity
+public class Emplacement extends Model{
+   private String batiment;
    private int allee;
-   private java.lang.String emplacement;
+   private String emplacement;
    private int etage;
    private float quantite;
-   private long idLot;
 
-    public Emplacement(long id, String batiment, int allee, String emplacement, int etage, float quantite, long idLot) {
-        this.id = id;
+   @OneToOne
+   private Lot lot;
+
+    public Emplacement(String batiment, int allee, String emplacement, int etage, float quantite, Lot lot) {
         this.batiment = batiment;
         this.allee = allee;
         this.emplacement = emplacement;
         this.etage = etage;
         this.quantite = quantite;
-        this.idLot = idLot;
+        this.lot = lot;
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public String getBatiment() {
-        return batiment;
-    }
-
-    public void setBatiment(String batiment) {
-        this.batiment = batiment;
-    }
-
-    public int getAllee() {
-        return allee;
-    }
-
-    public void setAllee(int allee) {
-        this.allee = allee;
-    }
-
-    public String getEmplacement() {
-        return emplacement;
-    }
-
-    public void setEmplacement(String emplacement) {
-        this.emplacement = emplacement;
-    }
-
-    public int getEtage() {
-        return etage;
-    }
-
-    public void setEtage(int etage) {
-        this.etage = etage;
-    }
-
+    /**
+     * Gets quantite.
+     *
+     * @return Value of quantite.
+     */
     public float getQuantite() {
         return quantite;
     }
 
+    /**
+     * Sets new etage.
+     *
+     * @param etage New value of etage.
+     */
+    public void setEtage(int etage) {
+        this.etage = etage;
+    }
+
+    /**
+     * Sets new lot.
+     *
+     * @param lot New value of lot.
+     */
+    public void setLot(Lot lot) {
+        this.lot = lot;
+    }
+
+    /**
+     * Gets emplacement.
+     *
+     * @return Value of emplacement.
+     */
+    public String getEmplacement() {
+        return emplacement;
+    }
+
+    /**
+     * Sets new quantite.
+     *
+     * @param quantite New value of quantite.
+     */
     public void setQuantite(float quantite) {
         this.quantite = quantite;
     }
 
-    public long getIdLot() {
-        return idLot;
+    /**
+     * Sets new allee.
+     *
+     * @param allee New value of allee.
+     */
+    public void setAllee(int allee) {
+        this.allee = allee;
     }
 
-    public void setIdLot(long idLot) {
-        this.idLot = idLot;
+    /**
+     * Gets etage.
+     *
+     * @return Value of etage.
+     */
+    public int getEtage() {
+        return etage;
+    }
+
+    /**
+     * Sets new emplacement.
+     *
+     * @param emplacement New value of emplacement.
+     */
+    public void setEmplacement(String emplacement) {
+        this.emplacement = emplacement;
+    }
+
+    /**
+     * Gets lot.
+     *
+     * @return Value of lot.
+     */
+    public Lot getLot() {
+        return lot;
+    }
+
+    /**
+     * Sets new batiment.
+     *
+     * @param batiment New value of batiment.
+     */
+    public void setBatiment(String batiment) {
+        this.batiment = batiment;
+    }
+
+    /**
+     * Gets batiment.
+     *
+     * @return Value of batiment.
+     */
+    public String getBatiment() {
+        return batiment;
+    }
+
+    /**
+     * Gets allee.
+     *
+     * @return Value of allee.
+     */
+    public int getAllee() {
+        return allee;
     }
 
     @Override
     public String toString() {
         return "Emplacement{" +
-                "id=" + id +
-                ", batiment='" + batiment + '\'' +
+                "batiment='" + batiment + '\'' +
                 ", allee=" + allee +
                 ", emplacement='" + emplacement + '\'' +
                 ", etage=" + etage +
                 ", quantite=" + quantite +
-                ", idLot=" + idLot +
+                ", lot=" + lot +
                 '}';
     }
 }

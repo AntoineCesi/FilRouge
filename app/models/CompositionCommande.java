@@ -1,45 +1,73 @@
 package models;
 /***********************************************************************
  * Module:  CompositionCommande.java
- * Author:  antoine
+ * Author:  antoi_000
  * Purpose: Defines the Class CompositionCommande
  ***********************************************************************/
 
-import java.util.*;
+import play.db.jpa.Model;
 
-public class CompositionCommande {
+import javax.persistence.Entity;
+
+@Entity
+public class CompositionCommande extends Model {
    private float quantite;
-   private long idProduit;
-   private long idCommande;
+   
+   private Produit produit;
+   private Commande commande;
 
-    public CompositionCommande(float quantite, long idProduit, long idCommande) {
-        this.quantite = quantite;
-        this.idProduit = idProduit;
-        this.idCommande = idCommande;
-    }
 
+    /**
+     * Gets quantite.
+     *
+     * @return Value of quantite.
+     */
     public float getQuantite() {
         return quantite;
     }
 
+    /**
+     * Sets new produit.
+     *
+     * @param produit New value of produit.
+     */
+    public void setProduit(Produit produit) {
+        this.produit = produit;
+    }
+
+    /**
+     * Sets new commande.
+     *
+     * @param commande New value of commande.
+     */
+    public void setCommande(Commande commande) {
+        this.commande = commande;
+    }
+
+    /**
+     * Sets new quantite.
+     *
+     * @param quantite New value of quantite.
+     */
     public void setQuantite(float quantite) {
         this.quantite = quantite;
     }
 
-    public long getIdProduit() {
-        return idProduit;
+    /**
+     * Gets produit.
+     *
+     * @return Value of produit.
+     */
+    public Produit getProduit() {
+        return produit;
     }
 
-    public long getIdCommande() {
-        return idCommande;
-    }
-
-    @Override
-    public String toString() {
-        return "CompositionCommande{" +
-                "quantite=" + quantite +
-                ", idProduit=" + idProduit +
-                ", idCommande=" + idCommande +
-                '}';
+    /**
+     * Gets commande.
+     *
+     * @return Value of commande.
+     */
+    public Commande getCommande() {
+        return commande;
     }
 }

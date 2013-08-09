@@ -1,60 +1,113 @@
 package models;
+
 /***********************************************************************
  * Module:  Alerte.java
  * Author:  Antoine
  * Purpose: Defines the Class Alerte
  ***********************************************************************/
 
+import play.db.jpa.Model;
+
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 import java.util.*;
 
-public class Alerte {
-   private long id;
-   private java.util.Date date;
-   private boolean visible;
-   private java.lang.String libelle;
+@Entity
+public class Alerte extends Model{
 
-    public Alerte(long id, Date date, boolean visible, String libelle) {
-        this.id = id;
+   private Date date;
+   private boolean visible;
+   private String libelle;
+
+   @OneToOne
+   private Service service;
+
+    public Alerte(Date date, boolean visible, String libelle, Service service) {
         this.date = date;
         this.visible = visible;
         this.libelle = libelle;
+        this.service = service;
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public boolean isVisible() {
-        return visible;
-    }
-
+    /**
+     * Sets new visible.
+     *
+     * @param visible New value of visible.
+     */
     public void setVisible(boolean visible) {
         this.visible = visible;
     }
 
+    /**
+     * Gets service.
+     *
+     * @return Value of service.
+     */
+    public Service getService() {
+        return service;
+    }
+
+    /**
+     * Gets date.
+     *
+     * @return Value of date.
+     */
+    public Date getDate() {
+        return date;
+    }
+
+    /**
+     * Sets new libelle.
+     *
+     * @param libelle New value of libelle.
+     */
+    public void setLibelle(String libelle) {
+        this.libelle = libelle;
+    }
+
+    /**
+     * Sets new date.
+     *
+     * @param date New value of date.
+     */
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    /**
+     * Gets libelle.
+     *
+     * @return Value of libelle.
+     */
     public String getLibelle() {
         return libelle;
     }
 
-    public void setLibelle(String libelle) {
-        this.libelle = libelle;
+    /**
+     * Sets new service.
+     *
+     * @param service New value of service.
+     */
+    public void setService(Service service) {
+        this.service = service;
+    }
+
+    /**
+     * Gets visible.
+     *
+     * @return Value of visible.
+     */
+    public boolean isVisible() {
+        return visible;
     }
 
     @Override
     public String toString() {
         return "Alerte{" +
-                "id=" + id +
-                ", date=" + date +
+                "date=" + date +
                 ", visible=" + visible +
                 ", libelle='" + libelle + '\'' +
+                ", service=" + service +
                 '}';
     }
 }

@@ -1,89 +1,154 @@
-package models;
-/***********************************************************************
+package models; /***********************************************************************
  * Module:  CoordonneePostale.java
  * Author:  antoine
  * Purpose: Defines the Class CoordonneePostale
  ***********************************************************************/
 
-import java.util.*;
+import play.db.jpa.Model;
 
-public class CoordonneePostale {
-   private long id;
-   private java.lang.String adresse;
-   private java.lang.String cp;
-   private java.lang.String ville;
-   private java.lang.String pays;
-   private java.lang.String libelle;
-   private long idPartenaire;
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 
-    public CoordonneePostale(long id, String adresse, String cp, String ville, String pays, String libelle, long idPartenaire) {
+@Entity
+public class CoordonneePostale extends Model{
+
+   private String adresse;
+   private String cp;
+   private String ville;
+   private String pays;
+   private String libelle;
+
+   @OneToOne
+   private Partenaire partenaire;
+
+    public CoordonneePostale(long id, String adresse, String cp, String ville, String pays, String libelle, Partenaire partenaire) {
         this.id = id;
         this.adresse = adresse;
         this.cp = cp;
         this.ville = ville;
         this.pays = pays;
         this.libelle = libelle;
-        this.idPartenaire = idPartenaire;
+        this.partenaire = partenaire;
     }
 
-    public long getId() {
-        return id;
-    }
 
-    public String getAdresse() {
-        return adresse;
-    }
-
-    public void setAdresse(String adresse) {
-        this.adresse = adresse;
-    }
-
-    public String getCp() {
-        return cp;
-    }
-
-    public void setCp(String cp) {
-        this.cp = cp;
-    }
-
-    public String getVille() {
-        return ville;
-    }
-
+    /**
+     * Sets new ville.
+     *
+     * @param ville New value of ville.
+     */
     public void setVille(String ville) {
         this.ville = ville;
     }
 
-    public String getPays() {
-        return pays;
-    }
-
+    /**
+     * Sets new pays.
+     *
+     * @param pays New value of pays.
+     */
     public void setPays(String pays) {
         this.pays = pays;
     }
 
+    /**
+     * Sets new cp.
+     *
+     * @param cp New value of cp.
+     */
+    public void setCp(String cp) {
+        this.cp = cp;
+    }
+
+    /**
+     * Gets partenaire.
+     *
+     * @return Value of partenaire.
+     */
+    public Partenaire getPartenaire() {
+        return partenaire;
+    }
+
+    /**
+     * Gets pays.
+     *
+     * @return Value of pays.
+     */
+    public String getPays() {
+        return pays;
+    }
+
+    /**
+     * Sets new partenaire.
+     *
+     * @param partenaire New value of partenaire.
+     */
+    public void setPartenaire(Partenaire partenaire) {
+        this.partenaire = partenaire;
+    }
+
+    /**
+     * Gets ville.
+     *
+     * @return Value of ville.
+     */
+    public String getVille() {
+        return ville;
+    }
+
+    /**
+     * Gets libelle.
+     *
+     * @return Value of libelle.
+     */
     public String getLibelle() {
         return libelle;
     }
 
-    public void setLibelle(String libelle) {
-        this.libelle = libelle;
+    /**
+     * Gets cp.
+     *
+     * @return Value of cp.
+     */
+    public String getCp() {
+        return cp;
     }
 
-    public long getIdPartenaire() {
-        return idPartenaire;
+    /**
+     * Sets new adresse.
+     *
+     * @param adresse New value of adresse.
+     */
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
+
+    /**
+     * Gets adresse.
+     *
+     * @return Value of adresse.
+     */
+    public String getAdresse() {
+        return adresse;
+    }
+
+    /**
+     * Sets new libelle.
+     *
+     * @param libelle New value of libelle.
+     */
+    public void setLibelle(String libelle) {
+        this.libelle = libelle;
     }
 
     @Override
     public String toString() {
         return "CoordonneePostale{" +
-                "id=" + id +
-                ", adresse='" + adresse + '\'' +
+                "adresse='" + adresse + '\'' +
                 ", cp='" + cp + '\'' +
                 ", ville='" + ville + '\'' +
                 ", pays='" + pays + '\'' +
                 ", libelle='" + libelle + '\'' +
-                ", idPartenaire=" + idPartenaire +
+                ", partenaire=" + partenaire +
                 '}';
     }
 }

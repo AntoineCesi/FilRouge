@@ -1,27 +1,34 @@
-package models;
-/***********************************************************************
+package models; /***********************************************************************
  * Module:  Contact.java
  * Author:  antoine
  * Purpose: Defines the Class Contact
  ***********************************************************************/
 
-import java.util.*;
+import play.db.jpa.Model;
 
-public class Contact {
-   private long id;
-   private java.lang.String nom;
-   private java.lang.String prenom;
-   private java.lang.String service;
-   private java.lang.String reference;
-   private java.lang.String fonction;
-   private java.lang.String telPort;
-   private java.lang.String ligneFixe;
-   private java.lang.String fax;
-   private java.lang.String courriel;
-   private boolean actif;
-   private long idPartenaire;
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 
-    public Contact(long id, String nom, String prenom, String service, String reference, String fonction, String telPort, String ligneFixe, String fax, String courriel, boolean actif, long idPartenaire) {
+@Entity
+public class Contact extends Model {
+
+    private String nom;
+    private String prenom;
+    private String service;
+    private String reference;
+    private String fonction;
+    private String telPort;
+    private String ligneFixe;
+    private String fax;
+    private String courriel;
+    private boolean actif;
+
+    @OneToOne
+    private Partenaire partenaire;
+
+    public Contact(long id, String nom, String prenom, String service, String reference, String fonction,
+                   String telPort, String ligneFixe, String fax, String courriel,
+                   boolean actif, Partenaire partenaire) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
@@ -33,102 +40,212 @@ public class Contact {
         this.fax = fax;
         this.courriel = courriel;
         this.actif = actif;
-        this.idPartenaire = idPartenaire;
+        this.partenaire = partenaire;
     }
 
-    public long getId() {
-        return id;
+
+    /**
+     * Gets partenaire.
+     *
+     * @return Value of partenaire.
+     */
+    public Partenaire getPartenaire() {
+        return partenaire;
     }
 
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public String getPrenom() {
-        return prenom;
-    }
-
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
-    }
-
-    public String getService() {
-        return service;
-    }
-
-    public void setService(String service) {
-        this.service = service;
-    }
-
-    public String getReference() {
-        return reference;
-    }
-
-    public void setReference(String reference) {
-        this.reference = reference;
-    }
-
-    public String getFonction() {
-        return fonction;
-    }
-
-    public void setFonction(String fonction) {
-        this.fonction = fonction;
-    }
-
-    public String getTelPort() {
-        return telPort;
-    }
-
-    public void setTelPort(String telPort) {
-        this.telPort = telPort;
-    }
-
-    public String getLigneFixe() {
-        return ligneFixe;
-    }
-
-    public void setLigneFixe(String ligneFixe) {
-        this.ligneFixe = ligneFixe;
-    }
-
-    public String getFax() {
-        return fax;
-    }
-
+    /**
+     * Sets new fax.
+     *
+     * @param fax New value of fax.
+     */
     public void setFax(String fax) {
         this.fax = fax;
     }
 
+    /**
+     * Gets fonction.
+     *
+     * @return Value of fonction.
+     */
+    public String getFonction() {
+        return fonction;
+    }
+
+    /**
+     * Gets fax.
+     *
+     * @return Value of fax.
+     */
+    public String getFax() {
+        return fax;
+    }
+
+    /**
+     * Gets courriel.
+     *
+     * @return Value of courriel.
+     */
     public String getCourriel() {
         return courriel;
     }
 
-    public void setCourriel(String courriel) {
-        this.courriel = courriel;
+    /**
+     * Sets new service.
+     *
+     * @param service New value of service.
+     */
+    public void setService(String service) {
+        this.service = service;
     }
 
+    /**
+     * Sets new prenom.
+     *
+     * @param prenom New value of prenom.
+     */
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    /**
+     * Gets actif.
+     *
+     * @return Value of actif.
+     */
     public boolean isActif() {
         return actif;
     }
 
+    /**
+     * Sets new actif.
+     *
+     * @param actif New value of actif.
+     */
     public void setActif(boolean actif) {
         this.actif = actif;
     }
 
-    public long getIdPartenaire() {
-        return idPartenaire;
+    /**
+     * Sets new fonction.
+     *
+     * @param fonction New value of fonction.
+     */
+    public void setFonction(String fonction) {
+        this.fonction = fonction;
+    }
+
+    /**
+     * Gets nom.
+     *
+     * @return Value of nom.
+     */
+    public String getNom() {
+        return nom;
+    }
+
+    /**
+     * Sets new courriel.
+     *
+     * @param courriel New value of courriel.
+     */
+    public void setCourriel(String courriel) {
+        this.courriel = courriel;
+    }
+
+    /**
+     * Gets service.
+     *
+     * @return Value of service.
+     */
+    public String getService() {
+        return service;
+    }
+
+    /**
+     * Gets telPort.
+     *
+     * @return Value of telPort.
+     */
+    public String getTelPort() {
+        return telPort;
+    }
+
+    /**
+     * Gets reference.
+     *
+     * @return Value of reference.
+     */
+    public String getReference() {
+        return reference;
+    }
+
+    /**
+     * Sets new ligneFixe.
+     *
+     * @param ligneFixe New value of ligneFixe.
+     */
+    public void setLigneFixe(String ligneFixe) {
+        this.ligneFixe = ligneFixe;
+    }
+
+    /**
+     * Gets prenom.
+     *
+     * @return Value of prenom.
+     */
+    public String getPrenom() {
+        return prenom;
+    }
+
+    /**
+     * Sets new partenaire.
+     *
+     * @param partenaire New value of partenaire.
+     */
+    public void setPartenaire(Partenaire partenaire) {
+        this.partenaire = partenaire;
+    }
+
+    /**
+     * Sets new telPort.
+     *
+     * @param telPort New value of telPort.
+     */
+    public void setTelPort(String telPort) {
+        this.telPort = telPort;
+    }
+
+    /**
+     * Sets new nom.
+     *
+     * @param nom New value of nom.
+     */
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    /**
+     * Gets ligneFixe.
+     *
+     * @return Value of ligneFixe.
+     */
+    public String getLigneFixe() {
+        return ligneFixe;
+    }
+
+    /**
+     * Sets new reference.
+     *
+     * @param reference New value of reference.
+     */
+    public void setReference(String reference) {
+        this.reference = reference;
     }
 
     @Override
     public String toString() {
         return "Contact{" +
-                "id=" + id +
-                ", nom='" + nom + '\'' +
+                "nom='" + nom + '\'' +
                 ", prenom='" + prenom + '\'' +
                 ", service='" + service + '\'' +
                 ", reference='" + reference + '\'' +
@@ -138,7 +255,7 @@ public class Contact {
                 ", fax='" + fax + '\'' +
                 ", courriel='" + courriel + '\'' +
                 ", actif=" + actif +
-                ", idPartenaire=" + idPartenaire +
+                ", partenaire=" + partenaire +
                 '}';
     }
 }
