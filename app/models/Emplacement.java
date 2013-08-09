@@ -1,24 +1,94 @@
+package models;
+
 /***********************************************************************
  * Module:  Emplacement.java
- * Author:  antoi_000
+ * Author:  antoine
  * Purpose: Defines the Class Emplacement
  ***********************************************************************/
 
 import java.util.*;
 
-/** @pdOid bd455d33-be3d-43ea-874e-f62b8f5adc9d */
 public class Emplacement {
-   /** @pdOid 50aa9a91-7ed0-413a-9d36-339cb40d8b98 */
-   public long empId;
-   /** @pdOid a3d861c5-ae5c-4be1-a270-67a17c2373c3 */
-   public java.lang.String empBatiment;
-   /** @pdOid b904aa49-ed54-4be6-8a1f-b650287491f2 */
-   public int empAllee;
-   /** @pdOid 45c37e59-9b1f-47bd-922c-3feeb9d93b20 */
-   public java.lang.String empEmplacement;
-   /** @pdOid 61d7a721-4e0e-4b05-8a73-d86cd4e34b9b */
-   public int empEtage;
-   /** @pdOid 0efabfe4-eeea-48a7-b8e4-069dc9e780f1 */
-   public float empQuantite;
+   private long id;
+   private java.lang.String batiment;
+   private int allee;
+   private java.lang.String emplacement;
+   private int etage;
+   private float quantite;
+   private long idLot;
 
+    public Emplacement(long id, String batiment, int allee, String emplacement, int etage, float quantite, long idLot) {
+        this.id = id;
+        this.batiment = batiment;
+        this.allee = allee;
+        this.emplacement = emplacement;
+        this.etage = etage;
+        this.quantite = quantite;
+        this.idLot = idLot;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public String getBatiment() {
+        return batiment;
+    }
+
+    public void setBatiment(String batiment) {
+        this.batiment = batiment;
+    }
+
+    public int getAllee() {
+        return allee;
+    }
+
+    public void setAllee(int allee) {
+        this.allee = allee;
+    }
+
+    public String getEmplacement() {
+        return emplacement;
+    }
+
+    public void setEmplacement(String emplacement) {
+        this.emplacement = emplacement;
+    }
+
+    public int getEtage() {
+        return etage;
+    }
+
+    public void setEtage(int etage) {
+        this.etage = etage;
+    }
+
+    public float getQuantite() {
+        return quantite;
+    }
+
+    public void setQuantite(float quantite) {
+        this.quantite = quantite;
+    }
+
+    public long getIdLot() {
+        return idLot;
+    }
+
+    public void setIdLot(long idLot) {
+        this.idLot = idLot;
+    }
+
+    @Override
+    public String toString() {
+        return "Emplacement{" +
+                "id=" + id +
+                ", batiment='" + batiment + '\'' +
+                ", allee=" + allee +
+                ", emplacement='" + emplacement + '\'' +
+                ", etage=" + etage +
+                ", quantite=" + quantite +
+                ", idLot=" + idLot +
+                '}';
+    }
 }

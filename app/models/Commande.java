@@ -11,15 +11,21 @@ public class Commande {
    private long id;
    private java.lang.String reference;
    private java.lang.String type;
+   private long idPartenaire;
 
-    public Commande(long id, String reference, String type) {
+    public Commande(long id, String reference, String type, long idPartenaire) {
         this.id = id;
         this.reference = reference;
         this.type = type;
+        this.idPartenaire = idPartenaire;
     }
 
     public long getid() {
         return id;
+    }
+
+    public long getIdPartenaire() {
+        return idPartenaire;
     }
 
     public String getreference() {
@@ -44,6 +50,7 @@ public class Commande {
                 "id=" + id +
                 ", reference='" + reference + '\'' +
                 ", type='" + type + '\'' +
+                ", idPartenaire='" + idPartenaire + '\'' +
                 '}';
     }
 }

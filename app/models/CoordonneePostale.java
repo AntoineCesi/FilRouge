@@ -1,24 +1,89 @@
+package models;
 /***********************************************************************
  * Module:  CoordonneePostale.java
- * Author:  antoi_000
+ * Author:  antoine
  * Purpose: Defines the Class CoordonneePostale
  ***********************************************************************/
 
 import java.util.*;
 
-/** @pdOid 4bc6f3db-01a3-4401-b42a-38d09ac97e8d */
 public class CoordonneePostale {
-   /** @pdOid 99de9d6b-109c-4f70-bde8-dbf6ea450943 */
-   public long cooId;
-   /** @pdOid 970cd77e-b8ed-4758-bb43-348923f06bea */
-   public java.lang.String cooAdresse;
-   /** @pdOid fc72918e-425b-4e49-8f96-b87eaab08b35 */
-   public java.lang.String cooCp;
-   /** @pdOid f5564144-c76e-4046-8f8e-3ad40d70749d */
-   public java.lang.String cooVille;
-   /** @pdOid 88b7a5a6-3a5b-4d19-8f6c-f4e05bf86a7e */
-   public java.lang.String cooPays;
-   /** @pdOid 8b0d3c08-06bb-4f86-a4b2-0db251e876de */
-   public java.lang.String cooLibelle;
+   private long id;
+   private java.lang.String adresse;
+   private java.lang.String cp;
+   private java.lang.String ville;
+   private java.lang.String pays;
+   private java.lang.String libelle;
+   private long idPartenaire;
 
+    public CoordonneePostale(long id, String adresse, String cp, String ville, String pays, String libelle, long idPartenaire) {
+        this.id = id;
+        this.adresse = adresse;
+        this.cp = cp;
+        this.ville = ville;
+        this.pays = pays;
+        this.libelle = libelle;
+        this.idPartenaire = idPartenaire;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public String getAdresse() {
+        return adresse;
+    }
+
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
+
+    public String getCp() {
+        return cp;
+    }
+
+    public void setCp(String cp) {
+        this.cp = cp;
+    }
+
+    public String getVille() {
+        return ville;
+    }
+
+    public void setVille(String ville) {
+        this.ville = ville;
+    }
+
+    public String getPays() {
+        return pays;
+    }
+
+    public void setPays(String pays) {
+        this.pays = pays;
+    }
+
+    public String getLibelle() {
+        return libelle;
+    }
+
+    public void setLibelle(String libelle) {
+        this.libelle = libelle;
+    }
+
+    public long getIdPartenaire() {
+        return idPartenaire;
+    }
+
+    @Override
+    public String toString() {
+        return "CoordonneePostale{" +
+                "id=" + id +
+                ", adresse='" + adresse + '\'' +
+                ", cp='" + cp + '\'' +
+                ", ville='" + ville + '\'' +
+                ", pays='" + pays + '\'' +
+                ", libelle='" + libelle + '\'' +
+                ", idPartenaire=" + idPartenaire +
+                '}';
+    }
 }

@@ -1,4 +1,5 @@
 package models;
+
 /***********************************************************************
  * Module:  Lot.java
  * Author:  antoine
@@ -12,16 +13,22 @@ public class Lot {
    private java.util.Date dateStock;
    private java.lang.String reference;
    private float quantite;
+   private long idProduit;
 
-    public Lot(long id, Date dateStock, String reference, float quantite) {
+    public Lot(long id, Date dateStock, String reference, float quantite, long idProduit) {
         this.id = id;
         this.dateStock = dateStock;
         this.reference = reference;
         this.quantite = quantite;
+        this.idProduit = idProduit;
     }
 
     public long getId() {
         return id;
+    }
+
+    public long getIdProduit() {
+        return idProduit;
     }
 
     public Date getDateStock() {
@@ -55,6 +62,7 @@ public class Lot {
                 ", dateStock=" + dateStock +
                 ", reference='" + reference + '\'' +
                 ", quantite=" + quantite +
+                ", idProduit=" + idProduit +
                 '}';
     }
 }

@@ -1,34 +1,144 @@
+package models;
 /***********************************************************************
  * Module:  Contact.java
- * Author:  antoi_000
+ * Author:  antoine
  * Purpose: Defines the Class Contact
  ***********************************************************************/
 
 import java.util.*;
 
-/** @pdOid 6387b6d6-6a66-4f14-8c78-22f0891764bb */
 public class Contact {
-   /** @pdOid 66e354e4-976e-4bd4-8494-974925b697f4 */
-   public long conId;
-   /** @pdOid 8c3b35dc-5281-4735-a244-63c0a1477dac */
-   public java.lang.String conNom;
-   /** @pdOid a54391ea-1b69-41c9-ac5b-d089fef812c8 */
-   public java.lang.String conPrenom;
-   /** @pdOid 9a1ee2dd-0f34-4d9a-8d49-1fb2a3e2c0d0 */
-   public java.lang.String conService;
-   /** @pdOid feaf6b9f-63d1-443d-9999-4dcf1c7750ba */
-   public java.lang.String conReference;
-   /** @pdOid 47662c5b-caaf-48fe-b222-a03f55f0ab82 */
-   public java.lang.String conFonction;
-   /** @pdOid bb3c2bd1-f3ed-4916-b1a3-530d6ba43516 */
-   public java.lang.String conPort;
-   /** @pdOid 35dc7e6d-146c-4b38-9983-53dc35131991 */
-   public java.lang.String conLigneFixe;
-   /** @pdOid 0a341c4f-6268-4abf-9efe-d302aee22c56 */
-   public java.lang.String conFax;
-   /** @pdOid d6dfeba5-1c93-46dc-ba8a-f3e93c498716 */
-   public java.lang.String conCourriel;
-   /** @pdOid 101f0ff8-90f5-4eb8-baa7-c3bf8fb7d8a4 */
-   public boolean conActif;
+   private long id;
+   private java.lang.String nom;
+   private java.lang.String prenom;
+   private java.lang.String service;
+   private java.lang.String reference;
+   private java.lang.String fonction;
+   private java.lang.String telPort;
+   private java.lang.String ligneFixe;
+   private java.lang.String fax;
+   private java.lang.String courriel;
+   private boolean actif;
+   private long idPartenaire;
 
+    public Contact(long id, String nom, String prenom, String service, String reference, String fonction, String telPort, String ligneFixe, String fax, String courriel, boolean actif, long idPartenaire) {
+        this.id = id;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.service = service;
+        this.reference = reference;
+        this.fonction = fonction;
+        this.telPort = telPort;
+        this.ligneFixe = ligneFixe;
+        this.fax = fax;
+        this.courriel = courriel;
+        this.actif = actif;
+        this.idPartenaire = idPartenaire;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    public String getService() {
+        return service;
+    }
+
+    public void setService(String service) {
+        this.service = service;
+    }
+
+    public String getReference() {
+        return reference;
+    }
+
+    public void setReference(String reference) {
+        this.reference = reference;
+    }
+
+    public String getFonction() {
+        return fonction;
+    }
+
+    public void setFonction(String fonction) {
+        this.fonction = fonction;
+    }
+
+    public String getTelPort() {
+        return telPort;
+    }
+
+    public void setTelPort(String telPort) {
+        this.telPort = telPort;
+    }
+
+    public String getLigneFixe() {
+        return ligneFixe;
+    }
+
+    public void setLigneFixe(String ligneFixe) {
+        this.ligneFixe = ligneFixe;
+    }
+
+    public String getFax() {
+        return fax;
+    }
+
+    public void setFax(String fax) {
+        this.fax = fax;
+    }
+
+    public String getCourriel() {
+        return courriel;
+    }
+
+    public void setCourriel(String courriel) {
+        this.courriel = courriel;
+    }
+
+    public boolean isActif() {
+        return actif;
+    }
+
+    public void setActif(boolean actif) {
+        this.actif = actif;
+    }
+
+    public long getIdPartenaire() {
+        return idPartenaire;
+    }
+
+    @Override
+    public String toString() {
+        return "Contact{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                ", service='" + service + '\'' +
+                ", reference='" + reference + '\'' +
+                ", fonction='" + fonction + '\'' +
+                ", telPort='" + telPort + '\'' +
+                ", ligneFixe='" + ligneFixe + '\'' +
+                ", fax='" + fax + '\'' +
+                ", courriel='" + courriel + '\'' +
+                ", actif=" + actif +
+                ", idPartenaire=" + idPartenaire +
+                '}';
+    }
 }
