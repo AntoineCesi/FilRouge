@@ -11,6 +11,7 @@ import javax.persistence.OneToOne;
 
 @Entity
 public class Emplacement extends Model{
+
    private String batiment;
    private int allee;
    private String emplacement;

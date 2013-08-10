@@ -13,6 +13,8 @@ import javax.persistence.OneToOne;
 @Entity
 public class Salarie extends Model {
 
+    private String identifiant;
+    private String mdp;
     private String reference;
     private String nom;
     private String prenom;
@@ -24,24 +26,41 @@ public class Salarie extends Model {
     @OneToOne
     private Service service;
 
-    public Salarie(String reference, String nom, String prenom, String fonction, String ligneFixe, String courriel, boolean actif, Service service) {
-        this.reference = reference;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.fonction = fonction;
-        this.ligneFixe = ligneFixe;
-        this.courriel = courriel;
-        this.actif = actif;
-        this.service = service;
+
+    /**
+     * Gets courriel.
+     *
+     * @return Value of courriel.
+     */
+    public String getCourriel() {
+        return courriel;
     }
 
     /**
-     * Gets service.
+     * Sets new identifiant.
      *
-     * @return Value of service.
+     * @param identifiant New value of identifiant.
      */
-    public Service getService() {
-        return service;
+    public void setIdentifiant(String identifiant) {
+        this.identifiant = identifiant;
+    }
+
+    /**
+     * Sets new fonction.
+     *
+     * @param fonction New value of fonction.
+     */
+    public void setFonction(String fonction) {
+        this.fonction = fonction;
+    }
+
+    /**
+     * Gets reference.
+     *
+     * @return Value of reference.
+     */
+    public String getReference() {
+        return reference;
     }
 
     /**
@@ -54,21 +73,48 @@ public class Salarie extends Model {
     }
 
     /**
-     * Gets ligneFixe.
-     *
-     * @return Value of ligneFixe.
-     */
-    public String getLigneFixe() {
-        return ligneFixe;
-    }
-
-    /**
      * Gets nom.
      *
      * @return Value of nom.
      */
     public String getNom() {
         return nom;
+    }
+
+    /**
+     * Gets mdp.
+     *
+     * @return Value of mdp.
+     */
+    public String getMdp() {
+        return mdp;
+    }
+
+    /**
+     * Sets new mdp.
+     *
+     * @param mdp New value of mdp.
+     */
+    public void setMdp(String mdp) {
+        this.mdp = mdp;
+    }
+
+    /**
+     * Gets actif.
+     *
+     * @return Value of actif.
+     */
+    public boolean isActif() {
+        return actif;
+    }
+
+    /**
+     * Sets new actif.
+     *
+     * @param actif New value of actif.
+     */
+    public void setActif(boolean actif) {
+        this.actif = actif;
     }
 
     /**
@@ -90,6 +136,33 @@ public class Salarie extends Model {
     }
 
     /**
+     * Gets identifiant.
+     *
+     * @return Value of identifiant.
+     */
+    public String getIdentifiant() {
+        return identifiant;
+    }
+
+    /**
+     * Gets service.
+     *
+     * @return Value of service.
+     */
+    public Service getService() {
+        return service;
+    }
+
+    /**
+     * Gets prenom.
+     *
+     * @return Value of prenom.
+     */
+    public String getPrenom() {
+        return prenom;
+    }
+
+    /**
      * Sets new reference.
      *
      * @param reference New value of reference.
@@ -108,57 +181,21 @@ public class Salarie extends Model {
     }
 
     /**
-     * Gets actif.
-     *
-     * @return Value of actif.
-     */
-    public boolean isActif() {
-        return actif;
-    }
-
-    /**
-     * Sets new fonction.
-     *
-     * @param fonction New value of fonction.
-     */
-    public void setFonction(String fonction) {
-        this.fonction = fonction;
-    }
-
-    /**
-     * Sets new actif.
-     *
-     * @param actif New value of actif.
-     */
-    public void setActif(boolean actif) {
-        this.actif = actif;
-    }
-
-    /**
-     * Gets courriel.
-     *
-     * @return Value of courriel.
-     */
-    public String getCourriel() {
-        return courriel;
-    }
-
-    /**
-     * Gets prenom.
-     *
-     * @return Value of prenom.
-     */
-    public String getPrenom() {
-        return prenom;
-    }
-
-    /**
      * Sets new service.
      *
      * @param service New value of service.
      */
     public void setService(Service service) {
         this.service = service;
+    }
+
+    /**
+     * Gets ligneFixe.
+     *
+     * @return Value of ligneFixe.
+     */
+    public String getLigneFixe() {
+        return ligneFixe;
     }
 
     /**
@@ -170,19 +207,12 @@ public class Salarie extends Model {
         this.ligneFixe = ligneFixe;
     }
 
-    /**
-     * Gets reference.
-     *
-     * @return Value of reference.
-     */
-    public String getReference() {
-        return reference;
-    }
-
     @Override
     public String toString() {
         return "Salarie{" +
-                "reference='" + reference + '\'' +
+                "identifiant='" + identifiant + '\'' +
+                ", mdp='" + mdp + '\'' +
+                ", reference='" + reference + '\'' +
                 ", nom='" + nom + '\'' +
                 ", prenom='" + prenom + '\'' +
                 ", fonction='" + fonction + '\'' +

@@ -7,61 +7,101 @@ package models; /***************************************************************
 import play.db.jpa.Model;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 import java.util.*;
 
 @Entity
 public class Reception extends Model{
 
-    private float recQuantite;
-    private Date recDate;
+    private float quantite;
+    private Date date;
+
+    @OneToOne
+    private Commande commande;
+
+    @OneToOne
+    private Produit produit;
 
 
-    public Reception(Date recDate, float recQuantite) {
-        this.recDate = recDate;
-        this.recQuantite = recQuantite;
+    /**
+     * Gets quantite.
+     *
+     * @return Value of quantite.
+     */
+    public float getQuantite() {
+        return quantite;
     }
 
     /**
-     * Sets new recQuantite.
+     * Gets commande.
      *
-     * @param recQuantite New value of recQuantite.
+     * @return Value of commande.
      */
-    public void setRecQuantite(float recQuantite) {
-        this.recQuantite = recQuantite;
+    public Commande getCommande() {
+        return commande;
     }
 
     /**
-     * Gets recQuantite.
+     * Sets new date.
      *
-     * @return Value of recQuantite.
+     * @param date New value of date.
      */
-    public float getRecQuantite() {
-        return recQuantite;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     /**
-     * Sets new recDate.
+     * Sets new quantite.
      *
-     * @param recDate New value of recDate.
+     * @param quantite New value of quantite.
      */
-    public void setRecDate(Date recDate) {
-        this.recDate = recDate;
+    public void setQuantite(float quantite) {
+        this.quantite = quantite;
     }
 
     /**
-     * Gets recDate.
+     * Sets new commande.
      *
-     * @return Value of recDate.
+     * @param commande New value of commande.
      */
-    public Date getRecDate() {
-        return recDate;
+    public void setCommande(Commande commande) {
+        this.commande = commande;
+    }
+
+    /**
+     * Gets produit.
+     *
+     * @return Value of produit.
+     */
+    public Produit getProduit() {
+        return produit;
+    }
+
+    /**
+     * Sets new produit.
+     *
+     * @param produit New value of produit.
+     */
+    public void setProduit(Produit produit) {
+        this.produit = produit;
+    }
+
+    /**
+     * Gets date.
+     *
+     * @return Value of date.
+     */
+    public Date getDate() {
+        return date;
     }
 
     @Override
     public String toString() {
         return "Reception{" +
-                "recQuantite=" + recQuantite +
-                ", recDate=" + recDate +
+                "quantite=" + quantite +
+                ", date=" + date +
+                ", commande=" + commande +
+                ", produit=" + produit +
                 '}';
     }
 }

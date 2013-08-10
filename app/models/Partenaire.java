@@ -21,79 +21,15 @@ public class Partenaire extends Model{
     private String reference;
     private String type;
 
-    @OneToMany
-    private List<Commande> commande;
+    @OneToMany(mappedBy = "partenaire")
+    private List<Commande> commandes;
 
-    @OneToMany
-    private List<CoordonneePostale> coordonneePostale;
+    @OneToMany(mappedBy = "partenaire")
+    private List<CoordonneePostale> coordonneePostales;
 
-    @OneToMany
-    private List<Contact> contact;
+    @OneToMany(mappedBy = "partenaire")
+    private List<Contact> contacts;
 
-    public Partenaire(long id, String nom, String noSIRET, int capital, boolean actif, String reference, String type) {
-        this.id = id;
-        this.nom = nom;
-        this.noSIRET = noSIRET;
-        this.capital = capital;
-        this.actif = actif;
-        this.reference = reference;
-        this.type = type;
-    }
-
-
-    /**
-     * Gets actif.
-     *
-     * @return Value of actif.
-     */
-    public boolean isActif() {
-        return actif;
-    }
-
-    /**
-     * Sets new capital.
-     *
-     * @param capital New value of capital.
-     */
-    public void setCapital(int capital) {
-        this.capital = capital;
-    }
-
-    /**
-     * Gets commande.
-     *
-     * @return Value of commande.
-     */
-    public List<Commande> getCommande() {
-        return commande;
-    }
-
-    /**
-     * Sets new reference.
-     *
-     * @param reference New value of reference.
-     */
-    public void setReference(String reference) {
-        this.reference = reference;
-    }
-
-    /**
-     * Gets noSIRET.
-     *
-     * @return Value of noSIRET.
-     */
-    public String getNoSIRET() {
-        return noSIRET;
-    }
-
-    /**
-     * Gets nom.
-     *
-     * @return Value of nom.
-     */
-    public String getNom() {
-        return nom;
-    }
 
     /**
      * Gets reference.
@@ -105,12 +41,21 @@ public class Partenaire extends Model{
     }
 
     /**
-     * Sets new actif.
+     * Gets coordonneePostales.
      *
-     * @param actif New value of actif.
+     * @return Value of coordonneePostales.
      */
-    public void setActif(boolean actif) {
-        this.actif = actif;
+    public List<CoordonneePostale> getCoordonneePostales() {
+        return coordonneePostales;
+    }
+
+    /**
+     * Sets new type.
+     *
+     * @param type New value of type.
+     */
+    public void setType(String type) {
+        this.type = type;
     }
 
     /**
@@ -123,39 +68,21 @@ public class Partenaire extends Model{
     }
 
     /**
-     * Gets coordonneePostale.
+     * Sets new commandes.
      *
-     * @return Value of coordonneePostale.
+     * @param commandes New value of commandes.
      */
-    public List<CoordonneePostale> getCoordonneePostale() {
-        return coordonneePostale;
+    public void setCommandes(List<Commande> commandes) {
+        this.commandes = commandes;
     }
 
     /**
-     * Sets new contact.
+     * Sets new contacts.
      *
-     * @param contact New value of contact.
+     * @param contacts New value of contacts.
      */
-    public void setContact(List<Contact> contact) {
-        this.contact = contact;
-    }
-
-    /**
-     * Gets capital.
-     *
-     * @return Value of capital.
-     */
-    public int getCapital() {
-        return capital;
-    }
-
-    /**
-     * Sets new commande.
-     *
-     * @param commande New value of commande.
-     */
-    public void setCommande(List<Commande> commande) {
-        this.commande = commande;
+    public void setContacts(List<Contact> contacts) {
+        this.contacts = contacts;
     }
 
     /**
@@ -168,6 +95,51 @@ public class Partenaire extends Model{
     }
 
     /**
+     * Gets nom.
+     *
+     * @return Value of nom.
+     */
+    public String getNom() {
+        return nom;
+    }
+
+    /**
+     * Gets actif.
+     *
+     * @return Value of actif.
+     */
+    public boolean isActif() {
+        return actif;
+    }
+
+    /**
+     * Gets commandes.
+     *
+     * @return Value of commandes.
+     */
+    public List<Commande> getCommandes() {
+        return commandes;
+    }
+
+    /**
+     * Gets capital.
+     *
+     * @return Value of capital.
+     */
+    public int getCapital() {
+        return capital;
+    }
+
+    /**
+     * Sets new actif.
+     *
+     * @param actif New value of actif.
+     */
+    public void setActif(boolean actif) {
+        this.actif = actif;
+    }
+
+    /**
      * Sets new noSIRET.
      *
      * @param noSIRET New value of noSIRET.
@@ -177,30 +149,48 @@ public class Partenaire extends Model{
     }
 
     /**
-     * Sets new coordonneePostale.
+     * Sets new capital.
      *
-     * @param coordonneePostale New value of coordonneePostale.
+     * @param capital New value of capital.
      */
-    public void setCoordonneePostale(List<CoordonneePostale> coordonneePostale) {
-        this.coordonneePostale = coordonneePostale;
+    public void setCapital(int capital) {
+        this.capital = capital;
     }
 
     /**
-     * Gets contact.
+     * Gets contacts.
      *
-     * @return Value of contact.
+     * @return Value of contacts.
      */
-    public List<Contact> getContact() {
-        return contact;
+    public List<Contact> getContacts() {
+        return contacts;
     }
 
     /**
-     * Sets new type.
+     * Sets new reference.
      *
-     * @param type New value of type.
+     * @param reference New value of reference.
      */
-    public void setType(String type) {
-        this.type = type;
+    public void setReference(String reference) {
+        this.reference = reference;
+    }
+
+    /**
+     * Sets new coordonneePostales.
+     *
+     * @param coordonneePostales New value of coordonneePostales.
+     */
+    public void setCoordonneePostales(List<CoordonneePostale> coordonneePostales) {
+        this.coordonneePostales = coordonneePostales;
+    }
+
+    /**
+     * Gets noSIRET.
+     *
+     * @return Value of noSIRET.
+     */
+    public String getNoSIRET() {
+        return noSIRET;
     }
 
     @Override
@@ -212,9 +202,9 @@ public class Partenaire extends Model{
                 ", actif=" + actif +
                 ", reference='" + reference + '\'' +
                 ", type='" + type + '\'' +
-                ", commande=" + commande +
-                ", coordonneePostale=" + coordonneePostale +
-                ", contact=" + contact +
+                ", commandes=" + commandes +
+                ", coordonneePostales=" + coordonneePostales +
+                ", contacts=" + contacts +
                 '}';
     }
 }

@@ -15,10 +15,10 @@ import java.util.*;
 public class Service extends Model {
    private String libelle;
 
-   @OneToMany
+   @OneToMany(mappedBy = "service")
    private List<Salarie> salarie;
 
-   @OneToMany
+   @OneToMany(mappedBy = "service")
    private List<Alerte> alerte;
 
     public Service(String libelle, List<Salarie> salarie, List<Alerte> alerte) {

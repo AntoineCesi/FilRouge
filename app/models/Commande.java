@@ -8,7 +8,7 @@ package models;
 import play.db.jpa.Model;
 
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import java.util.*;
 
@@ -18,39 +18,35 @@ public class Commande extends Model{
    private String reference;
    private String type;
 
-   @OneToOne
-   private Reception reception;
+   @OneToMany(mappedBy = "commande")
+   private List<Reception> receptions;
 
-   @ManyToMany
-   private List<Produit> produits;
+   @OneToMany(mappedBy="commande")
+   private List<CompositionCommande> compositionCommandes;
 
    @OneToOne
    private Partenaire partenaire;
 
-    public Commande(String reference, String type, Reception reception, List<Produit> produits, Partenaire partenaire) {
-        this.reference = reference;
-        this.type = type;
-        this.reception = reception;
-        this.produits = produits;
-        this.partenaire = partenaire;
+   @OneToMany(mappedBy = "commande")
+   private List<StatutCommande> statutCommandes;
+
+
+    /**
+     * Sets new compositionCommandes.
+     *
+     * @param compositionCommandes New value of compositionCommandes.
+     */
+    public void setCompositionCommandes(List<CompositionCommande> compositionCommandes) {
+        this.compositionCommandes = compositionCommandes;
     }
 
     /**
-     * Sets new reference.
+     * Gets compositionCommandes.
      *
-     * @param reference New value of reference.
+     * @return Value of compositionCommandes.
      */
-    public void setReference(String reference) {
-        this.reference = reference;
-    }
-
-    /**
-     * Sets new produits.
-     *
-     * @param produits New value of produits.
-     */
-    public void setProduits(List<Produit> produits) {
-        this.produits = produits;
+    public List<CompositionCommande> getCompositionCommandes() {
+        return compositionCommandes;
     }
 
     /**
@@ -63,39 +59,12 @@ public class Commande extends Model{
     }
 
     /**
-     * Sets new reception.
+     * Sets new receptions.
      *
-     * @param reception New value of reception.
+     * @param receptions New value of receptions.
      */
-    public void setReception(Reception reception) {
-        this.reception = reception;
-    }
-
-    /**
-     * Gets reception.
-     *
-     * @return Value of reception.
-     */
-    public Reception getReception() {
-        return reception;
-    }
-
-    /**
-     * Gets partenaire.
-     *
-     * @return Value of partenaire.
-     */
-    public Partenaire getPartenaire() {
-        return partenaire;
-    }
-
-    /**
-     * Sets new type.
-     *
-     * @param type New value of type.
-     */
-    public void setType(String type) {
-        this.type = type;
+    public void setReceptions(List<Reception> receptions) {
+        this.receptions = receptions;
     }
 
     /**
@@ -117,12 +86,57 @@ public class Commande extends Model{
     }
 
     /**
-     * Gets produits.
+     * Gets partenaire.
      *
-     * @return Value of produits.
+     * @return Value of partenaire.
      */
-    public List<Produit> getProduits() {
-        return produits;
+    public Partenaire getPartenaire() {
+        return partenaire;
+    }
+
+    /**
+     * Sets new type.
+     *
+     * @param type New value of type.
+     */
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    /**
+     * Sets new reference.
+     *
+     * @param reference New value of reference.
+     */
+    public void setReference(String reference) {
+        this.reference = reference;
+    }
+
+    /**
+     * Gets commandeAvoirStatuts.
+     *
+     * @return Value of commandeAvoirStatuts.
+     */
+    public List<StatutCommande> getStatutCommandes() {
+        return statutCommandes;
+    }
+
+    /**
+     * Gets receptions.
+     *
+     * @return Value of receptions.
+     */
+    public List<Reception> getReceptions() {
+        return receptions;
+    }
+
+    /**
+     * Sets new commandeAvoirStatuts.
+     *
+     * @param statutCommandes New value of commandeAvoirStatuts.
+     */
+    public void setStatutCommandes(List<StatutCommande> statutCommandes) {
+        this.statutCommandes = statutCommandes;
     }
 
     @Override
@@ -130,9 +144,10 @@ public class Commande extends Model{
         return "Commande{" +
                 "reference='" + reference + '\'' +
                 ", type='" + type + '\'' +
-                ", reception=" + reception +
-                ", produits=" + produits +
+                ", receptions=" + receptions +
+                ", compositionCommandes=" + compositionCommandes +
                 ", partenaire=" + partenaire +
+                ", commandeAvoirStatuts=" + statutCommandes +
                 '}';
     }
 }

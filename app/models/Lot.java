@@ -20,7 +20,7 @@ public class Lot extends Model {
    @OneToOne
    private Produit produit;
 
-   @OneToMany
+   @OneToMany(mappedBy = "lot")
    private List<Emplacement> emplacement;
 
     public Lot(Date dateStock, String reference, float quantite, Produit produit, List<Emplacement> emplacement) {
