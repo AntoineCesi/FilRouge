@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+        <link rel="stylesheet" media="screen" href="@{'/public/css/crud.css'}" />
+    <body id="crud">
+        #{if request.actionMethod != 'index'}
+            <div id="crudBreadcrumb">
+                #{crud.navigation /}
+            </div>
+        #{/if}
+
+        #{if flash.success}
+            <div class="crudFlash flashSuccess">
+                ${flash.success}
+            </div>
+        #{/if}
+        #{if flash.error || error}
+            <div class="crudFlash flashError">
+                ${error ?: flash.error}
+            </div>
+        #{/if}
+
+        <div id="crudContent">
+            #{doLayout /}
+        </div>
+
+    </body>
