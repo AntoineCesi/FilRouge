@@ -12,24 +12,14 @@ import javax.persistence.OneToOne;
 @Entity
 public class CoordonneePostale extends Model{
 
-   private String adresse;
-   private String cp;
-   private String ville;
-   private String pays;
-   private String libelle;
+    public String adresse;
+    public String cp;
+    public String ville;
+    public String pays;
+    public String libelle;
 
    @OneToOne
-   private Partenaire partenaire;
-
-    public CoordonneePostale(long id, String adresse, String cp, String ville, String pays, String libelle, Partenaire partenaire) {
-        this.id = id;
-        this.adresse = adresse;
-        this.cp = cp;
-        this.ville = ville;
-        this.pays = pays;
-        this.libelle = libelle;
-        this.partenaire = partenaire;
-    }
+   public Partenaire partenaire;
 
 
     /**

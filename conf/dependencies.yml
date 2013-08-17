@@ -4,5 +4,6 @@ require:
     - play
     - play -> maven head
     - play -> crud
+    - secure -> secure
 
 

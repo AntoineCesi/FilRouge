@@ -2,7 +2,7 @@
 # For example, for French create a messages.fr file
 #
 
-# Default CRUD messages
+# Custom CRUD messages
 # ~~~~~~
 
 crud.title=Administration
@@ -11,28 +11,28 @@ crud.blank=New
 crud.index.title=Choose the object to edit
 crud.index.objectType=Object type
 crud.index.action=
-crud.index.add=Add
-crud.add= &{%s}
-crud.list.title=&{%s}
+crud.index.add=Créer
+crud.add=Créer &{%s}
+crud.list.title=Gestion des &{%s}
 crud.list.size=%d &{%s}
 crud.list.totalSize=%d total
-crud.pagination.previous=« Previous
-crud.pagination.next=Next »
+crud.pagination.previous=« Précédent
+crud.pagination.next=Suivant »
 crud.pagination.last=Last »»
 crud.pagination.first=«« First
-crud.show.title=Edit &{%s}
-crud.save=Save
-crud.saveAndContinue=Save and continue editing
+crud.show.title=Modifier &{%s}
+crud.save=Sauvegarder
+crud.saveAndContinue=Sauvegarder et continuer l'édition
 crud.cancel=Cancel
 crud.hasErrors=Please correct errors
-crud.blank.title=Add &{%s}
-crud.saveAndAddAnother=Save and create another
-crud.delete=Delete &{%s}
-crud.created=The &{%s} has been created
-crud.saved=The &{%s} has been saved
-crud.deleted=The &{%s} has been deleted
+crud.blank.title=Créer &{%s}
+crud.saveAndAddAnother=Sauvegarder et créer un autre
+crud.delete=Supprimer &{%s}
+crud.created=Le &{%s} a été créé
+crud.saved=Le &{%s} a été sauvé
+crud.deleted=Le &{%s} a été supprimé
 crud.delete.error=Cannot delete this object
-crud.search=Search
+crud.search=Chercher
 crud.none=(None)
 crud.selectValue=(Please select a value)
 
@@ -49,8 +49,8 @@ crud.help.after=After %s.
 crud.help.before=Before %s.
 crud.help.range=Between %d and %d
 
-delete = Delete
-modify = Modify
+delete = Supprimer
+modify = Modifier
 
 reference = Référence interne
 nom = Nom

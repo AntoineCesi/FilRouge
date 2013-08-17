@@ -1,0 +1,132 @@
+#{extends 'CRUD/layout.html' /}
+#{set title:messages.get('crud.show.title', type.modelName) /}
+
+<div id="crudShow" class="${type.name}">
+
+    <h2 id="crudShowTitle">&{'crud.show.title', type.modelName}</h2>
+
+    #{form action:@save(object._key()), enctype:'multipart/form-data'}
+        <legend>Informations</legend><br/>
+        <div class="row">
+            <div class="span5">
+                #{crud.form fields:['type', 'nom', 'noSIRET']/}
+            </div>
+            <div class="span5">
+                #{crud.form fields:['reference', 'actif', 'capital']/}
+            </div>
+            #{crud.form fields:['contacts']}
+                <div class="span5">
+                    #{crud.custom "contacts"}
+                        Contact
+                    #{/crud.custom}
+                </div>
+            #{/crud.form}
+        </div>
+        <legend>Coordonnées</legend><br/>
+        <a id="add-btn" class="btn btn-success">
+            +
+        </a>
+        <table id="addresses" class="">
+            <thead>
+                <td>Etat</td>
+                <td>Adresse</td>
+                <td>CP</td>
+                <td>Ville</td>
+                <td>Pays</td>
+                <td></td>
+            </thead>
+            <tbody>
+                #{list items:models.CoordonneePostale.findAll(), as:'coordonneePostale'}
+                    <tr>
+                        <td>
+                            <a href="#" id="username" data-type="select" data-original-title="Saisir Etat"
+                               class="editable editable-click" style="display: inline;"></a>
+                        *{<input type="hidden" name="object.coordonneePostales." value="">}*
+                        </td>
+                        <td>
+                            <a href="#" id="adresse" data-type="text" data-original-title="Saisir Adresse"
+                               class="editable editable-click" style="display: inline;">${coordonneePostale.adresse}</a>
+                            <input type="hidden" name="object.coordonneePostales[0].adresse" value="${coordonneePostale.adresse}">
+                        </td>
+                        <td>
+                            <a href="#" id="username" data-type="text" data-original-title="Saisir CP"
+                               class="editable editable-click" style="display: inline;">${coordonneePostale.cp}</a>
+                            <input type="hidden" name="object.coordonneePostales[0].cp" value="${coordonneePostale.cp}">
+                        </td>
+                        <td>
+                            <a href="#" id="username" data-type="text" data-original-title="Saisir Ville"
+                               class="editable editable-click" style="display: inline;">${coordonneePostale.ville}</a>
+                            <input type="hidden" name="object.coordonneePostales[0].ville" value="${coordonneePostale.ville}">
+                        </td>
+                        <td>
+                            <a href="#" id="username" data-type="text" data-original-title="Saisir Pays"
+                               class="editable editable-click" style="display: inline;">${coordonneePostale.pays}</a>
+                            <input type="hidden" name="object.coordonneePostales[0].pays" value="${coordonneePostale.pays}">
+                        </td>
+                        <td>
+                            <a class="btn btn-danger" onclick='$(this).parentsUntil("tbody", "tr").remove();'>
+                            -
+                            </a>
+                        </td>
+                    </tr>
+                #{/list}
+            </tbody>
+        </table>
+        <div class="tags-list">
+
+        </div>
+        <p class="crudButtons">
+            <input type="submit" name="_save" value="&{'crud.save', type.modelName}" />
+            <input type="submit" name="_saveAndContinue" value="&{'crud.saveAndContinue', type.modelName}" />
+        </p>
+    #{/form}
+
+    #{form @delete(object._key())}
+        <p class="crudDelete">
+            <input type="submit" value="&{'crud.delete', type.modelName}" />
+        </p>
+    #{/form}
+
+</div>
+<link rel="stylesheet" media="screen" href="@{'/public/js/bootstrap-editable-1.4.6/css/bootstrap-editable.css'}">
+<script src="@{'/public/js/bootstrap-editable-1.4.6/js/bootstrap-editable.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+<script id="entry-template" type="text/x-handlebars-template">
+    <tr>
+        <td>
+            <a href="#" id="username" data-type="select" data-original-title="Saisir Etat"
+               class="editable editable-click" style="display: inline;"></a>
+        *{<input type="hidden" name="object.coordonneePostales." value="">}*
+        </td>
+        <td>
+            <a href="#" id="username" data-type="text" data-original-title="Saisir Adresse"
+               class="editable editable-click" style="display: inline;"></a>
+            <input type="hidden" name="object.coordonneePostales[0].adresse" value="">
+        </td>
+        <td>
+            <a href="#" id="username" data-type="text" data-original-title="Saisir CP"
+               class="editable editable-click" style="display: inline;"></a>
+            <input type="hidden" name="object.coordonneePostales[0].cp" value="">
+        </td>
+        <td>
+            <a href="#" id="username" data-type="text" data-original-title="Saisir Ville"
+               class="editable editable-click" style="display: inline;"></a>
+            <input type="hidden" name="object.coordonneePostales[0].ville" value="">
+        </td>
+        <td>
+            <a href="#" id="username" data-type="text" data-original-title="Saisir Pays"
+               class="editable editable-click" style="display: inline;"></a>
+            <input type="hidden" name="object.coordonneePostales[0].pays" value="">
+        </td>
+        <td>
+            <a class="btn btn-danger" onclick='$(this).parentsUntil("tbody", "tr").remove();'>
+                -
+            </a>
+        </td>
+    </tr>
+</script>
+<script src="@{'/public/js/partenaire.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+<script type="text/javascript">
+    $(function() {
+        editableTableAdsresses();
+    });
+</script>
