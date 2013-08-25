@@ -93,7 +93,7 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Stock <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="#">Gestion des produits</a></li>
-                                    <li><a href="#">Gestion des emplacements</a></li>
+                                    <li>#{a @Emplacements.list()}Gestion des emplacements#{/a}</li>
                                     <li class="divider"></li>
                                     <li class="nav-header">Nav header</li>
                                     <li><a href="#">Gestion des nomenclatures</a></li>
@@ -118,7 +118,7 @@
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Personnes <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
                                         <li>#{a @Partenaires.list()}Gestion des partenaires#{/a}</li>
-                                        <li><a href="#">Gestion des contacts</a></li>
+                                        <li>#{a @Contacts.list()}Gestion des contacts#{/a}</li>
                                         <li><a href="#">Gestion des employés</a></li>
                                     </ul>
                                 </li>
@@ -127,7 +127,7 @@
                                     <ul class="dropdown-menu">
                                         <li>#{a @CRUD.index()}Administration#{/a}</li>
                                         <li><a href="#">Gestion des utilisateurs</a></li>
-                                        <li><a href="#">Gestion des services</a></li>
+                                        <li>#{a @Services.list()}Gestion des services#{/a}</li>
                                     </ul>
                                 </li>
                         </ul>
@@ -146,7 +146,7 @@
 
     <div id="footer">
         <div class="container">
-            <p class="muted credit"> Développé par Antoine Dermarly.</p>
+            <p class="muted credit"> Développé par Antoine Demarly.</p>
         </div>
     </div>
 

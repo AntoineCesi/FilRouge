@@ -4,6 +4,7 @@ package models; /***************************************************************
  * Purpose: Defines the Class Contact
  ***********************************************************************/
 
+import play.data.validation.Required;
 import play.db.jpa.Model;
 
 import javax.persistence.Entity;
@@ -12,9 +13,12 @@ import javax.persistence.OneToOne;
 @Entity
 public class Contact extends Model {
 
+    @Required
     private String nom;
+    @Required
     private String prenom;
     private String service;
+    @Required
     private String reference;
     private String fonction;
     private String telPort;
@@ -240,22 +244,5 @@ public class Contact extends Model {
      */
     public void setReference(String reference) {
         this.reference = reference;
-    }
-
-    @Override
-    public String toString() {
-        return "Contact{" +
-                "nom='" + nom + '\'' +
-                ", prenom='" + prenom + '\'' +
-                ", service='" + service + '\'' +
-                ", reference='" + reference + '\'' +
-                ", fonction='" + fonction + '\'' +
-                ", telPort='" + telPort + '\'' +
-                ", ligneFixe='" + ligneFixe + '\'' +
-                ", fax='" + fax + '\'' +
-                ", courriel='" + courriel + '\'' +
-                ", actif=" + actif +
-                ", partenaire=" + partenaire +
-                '}';
     }
 }

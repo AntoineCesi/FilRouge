@@ -24,7 +24,7 @@ crud.show.title=Modifier &{%s}
 crud.save=Sauvegarder
 crud.saveAndContinue=Sauvegarder et continuer l'édition
 crud.cancel=Cancel
-crud.hasErrors=Please correct errors
+crud.hasErrors=Veuillez corriger les erreurs
 crud.blank.title=Créer &{%s}
 crud.saveAndAddAnother=Sauvegarder et créer un autre
 crud.delete=Supprimer &{%s}
@@ -49,6 +49,9 @@ crud.help.after=After %s.
 crud.help.before=Before %s.
 crud.help.range=Between %d and %d
 
+validation.required = Obligatoire
+validation.invalid = Valeur Incorrecte
+
 delete = Supprimer
 modify = Modifier
 
@@ -59,5 +62,21 @@ capital = Capital
 actif = Etat
 type = Type
 action = Action
+prenom = Prénom
+service = Service
+fonction = Fonction
+telPort = N° Téléphone Portable
+ligneFixe = N° Téléphone Fixe
+fax = N° Fax
+courriel = Courriel
+partenaire = Partenaire
+libelle = Libellé
+batiment = Bâtiment
+allee = Allée
+emplacement = Emplacement
+etage = Etage
+lot = Lot
+quantite = Quantité
+
 
 

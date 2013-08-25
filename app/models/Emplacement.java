@@ -1,9 +1,13 @@
 package models; /***********************************************************************
  * Module:  Emplacement.java
- * Author:  antoi_000
+ * Author:  antoine
  * Purpose: Defines the Class Emplacement
  ***********************************************************************/
 
+import net.sf.ehcache.search.expression.NotEqualTo;
+import net.sf.oval.constraint.NotEmpty;
+import play.data.validation.Min;
+import play.data.validation.Required;
 import play.db.jpa.Model;
 
 import javax.persistence.Entity;
@@ -12,16 +16,21 @@ import javax.persistence.OneToOne;
 @Entity
 public class Emplacement extends Model{
 
+    @Required
    private String batiment;
-   private int allee;
+    @Required
+   private Integer allee;
+    @Required
    private String emplacement;
-   private int etage;
+    @Required
+   private Integer etage;
+    @Required
    private float quantite;
 
    @OneToOne
    private Lot lot;
 
-    public Emplacement(String batiment, int allee, String emplacement, int etage, float quantite, Lot lot) {
+    public Emplacement(String batiment, Integer allee, String emplacement, Integer etage, float quantite, Lot lot) {
         this.batiment = batiment;
         this.allee = allee;
         this.emplacement = emplacement;
@@ -44,7 +53,7 @@ public class Emplacement extends Model{
      *
      * @param etage New value of etage.
      */
-    public void setEtage(int etage) {
+    public void setEtage(Integer etage) {
         this.etage = etage;
     }
 
@@ -80,7 +89,7 @@ public class Emplacement extends Model{
      *
      * @param allee New value of allee.
      */
-    public void setAllee(int allee) {
+    public void setAllee(Integer allee) {
         this.allee = allee;
     }
 
@@ -89,7 +98,7 @@ public class Emplacement extends Model{
      *
      * @return Value of etage.
      */
-    public int getEtage() {
+    public Integer getEtage() {
         return etage;
     }
 
@@ -134,19 +143,7 @@ public class Emplacement extends Model{
      *
      * @return Value of allee.
      */
-    public int getAllee() {
+    public Integer getAllee() {
         return allee;
-    }
-
-    @Override
-    public String toString() {
-        return "Emplacement{" +
-                "batiment='" + batiment + '\'' +
-                ", allee=" + allee +
-                ", emplacement='" + emplacement + '\'' +
-                ", etage=" + etage +
-                ", quantite=" + quantite +
-                ", lot=" + lot +
-                '}';
     }
 }

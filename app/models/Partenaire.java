@@ -34,7 +34,7 @@ public class Partenaire extends Model{
     public String reference;
 
     public boolean actif;
-    public int capital;
+    public Integer capital;
 
     @OneToMany(mappedBy = "partenaire")
     public List<Commande> commandes;
