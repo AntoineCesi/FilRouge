@@ -6,7 +6,7 @@
 # ~~~~~~
 
 crud.title=Administration
-crud.home=Home
+crud.home=Accueil
 crud.blank=Nouveau
 crud.index.title=Choose the object to edit
 crud.index.objectType=Object type
@@ -23,7 +23,7 @@ crud.pagination.first=«« First
 crud.show.title=Modifier &{%s}
 crud.save=Sauvegarder
 crud.saveAndContinue=Sauvegarder et continuer l'édition
-crud.cancel=Cancel
+crud.cancel=Retour
 crud.hasErrors=Veuillez corriger les erreurs
 crud.blank.title=Créer &{%s}
 crud.saveAndAddAnother=Sauvegarder et créer un autre

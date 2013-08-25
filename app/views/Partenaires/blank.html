@@ -23,10 +23,10 @@
             #{/crud.form}
         </div>
         <legend>Coordonnées</legend><br/>
-        <a id="add-btn" class="btn btn-success">
+        <a id="add-btn" class="btn btn-success" style="color:white">
             +
         </a>
-        <table id="addresses" class="">
+        <table id="addresses">
             <thead>
                 <td>Adresse</td>
                 <td>CP</td>
@@ -39,9 +39,10 @@
             </tbody>
         </table>
         <p class="crudButtons">
-            <input type="submit" name="_save" value="&{'crud.save', type.modelName}" />
-            <input type="submit" name="_saveAndContinue" value="&{'crud.saveAndContinue', type.modelName}" />
-            <input type="submit" name="_saveAndAddAnother" value="&{'crud.saveAndAddAnother', type.modelName}" />
+            #{a @list(), class:"btn btn-danger", style:'color:white'}&{'crud.cancel', type.modelName} #{/a}
+            <input type="submit" name="_save" value="&{'crud.save', type.modelName}" class="btn btn-success"/>
+            <input type="submit" name="_saveAndContinue" value="&{'crud.saveAndContinue', type.modelName}" class="btn"/>
+            <input type="submit" name="_saveAndAddAnother" value="&{'crud.saveAndAddAnother', type.modelName}" class="btn"/>
         </p>
     #{/form}
 
@@ -71,7 +72,7 @@
             <input type="hidden" name="object.coordonneePostales[{{indexTr}}].pays" value="">
         </td>
         <td>
-            <a class="btn btn-danger" onclick='$(this).parentsUntil("tbody", "tr").remove();'>
+            <a class="btn btn-danger" onclick='$(this).parentsUntil("tbody", "tr").remove();' style="color:white;">
                 -
             </a>
         </td>
