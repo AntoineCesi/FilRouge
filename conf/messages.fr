@@ -7,7 +7,7 @@
 
 crud.title=Administration
 crud.home=Home
-crud.blank=New
+crud.blank=Nouveau
 crud.index.title=Choose the object to edit
 crud.index.objectType=Object type
 crud.index.action=
@@ -36,12 +36,12 @@ crud.search=Chercher
 crud.none=(None)
 crud.selectValue=(Please select a value)
 
-crud.help.required=Required.
+crud.help.required=Obligatoire.
 crud.help.minlength=Min length is %d.
 crud.help.maxlength=Max length is %d.
 crud.help.email=Valid email address.
 crud.help.dateformat=&{%s} format.
-crud.help.numeric=Numeric.
+crud.help.numeric=Numérique.
 crud.help.min=Must be greater than %d.
 crud.help.future=In the future.
 crud.help.past=In the past.

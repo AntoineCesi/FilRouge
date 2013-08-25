@@ -17,6 +17,10 @@ var source   = $("#entry-template").html();
 var template = Handlebars.compile(source);
 
 $('#add-btn').click(function() {
-    $("#addresses>tbody").append(template());
+    var indexTr = {indexTr:$("#addresses>tbody>tr").size(),partenaire_id:$("#idObject").val()};
+    $("#addresses>tbody").append(template(indexTr));
     editableTableAdsresses();
 });
+
+
+

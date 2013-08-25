@@ -28,7 +28,6 @@
         </a>
         <table id="addresses" class="">
             <thead>
-                <td>Etat</td>
                 <td>Adresse</td>
                 <td>CP</td>
                 <td>Ville</td>
@@ -52,29 +51,24 @@
 <script id="entry-template" type="text/x-handlebars-template">
     <tr>
         <td>
-            <a href="#" id="username" data-type="select" data-original-title="Saisir Etat"
+            <a href="#" id="idAdresse" data-type="text" data-original-title="Saisir Adresse"
                class="editable editable-click" style="display: inline;"></a>
-        *{<input type="hidden" name="object.coordonneePostales." value="">}*
+            <input type="hidden" name="object.coordonneePostales[{{indexTr}}].adresse" value="">
         </td>
         <td>
-            <a href="#" id="username" data-type="text" data-original-title="Saisir Adresse"
+            <a href="#" id="idCp" data-type="text" data-original-title="Saisir CP"
                class="editable editable-click" style="display: inline;"></a>
-            <input type="hidden" name="object.coordonneePostales.adresse" value="">
+            <input type="hidden" name="object.coordonneePostales[{{indexTr}}].cp" value="">
         </td>
         <td>
-            <a href="#" id="username" data-type="text" data-original-title="Saisir CP"
+            <a href="#" id="idVille" data-type="text" data-original-title="Saisir Ville"
                class="editable editable-click" style="display: inline;"></a>
-            <input type="hidden" name="object.coordonneePostales.cp" value="">
+            <input type="hidden" name="object.coordonneePostales[{{indexTr}}].ville" value="">
         </td>
         <td>
-            <a href="#" id="username" data-type="text" data-original-title="Saisir Ville"
+            <a href="#" id="idPays" data-type="text" data-original-title="Saisir Pays"
                class="editable editable-click" style="display: inline;"></a>
-            <input type="hidden" name="object.coordonneePostales.ville" value="">
-        </td>
-        <td>
-            <a href="#" id="username" data-type="text" data-original-title="Saisir Pays"
-               class="editable editable-click" style="display: inline;"></a>
-            <input type="hidden" name="object.coordonneePostales.pays" value="">
+            <input type="hidden" name="object.coordonneePostales[{{indexTr}}].pays" value="">
         </td>
         <td>
             <a class="btn btn-danger" onclick='$(this).parentsUntil("tbody", "tr").remove();'>
