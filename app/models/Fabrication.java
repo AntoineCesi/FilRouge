@@ -4,14 +4,12 @@ package models; /***************************************************************
  * Purpose: Defines the Class Fabrication
  ***********************************************************************/
 
-import play.db.jpa.Model;
-
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 import java.util.*;
 
 @Entity
-public class Fabrication extends Model{
+public class Fabrication extends ModelCustom{
 
     private Date dateCreation;
     private boolean termine;

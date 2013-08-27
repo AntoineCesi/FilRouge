@@ -6,18 +6,17 @@ package models;
  ***********************************************************************/
 
 import models.enums.Type;
-import play.db.jpa.Model;
 
 import javax.persistence.*;
 import java.util.*;
 
 @Entity
-public class Commande extends Model{
+public class Commande extends ModelCustom{
 
    private String reference;
 
     @Enumerated(EnumType.STRING)
-    private Type type;
+    public Type type;
 
    @OneToMany(mappedBy = "commande")
    private List<Reception> receptions;

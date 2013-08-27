@@ -2,14 +2,27 @@
 #{set title:messages.get('crud.list.title', type.name) /}
 <div id="crudList" class="${type.name}">
 
-    <h2 id="crudListTitle">&{'crud.list.title', type.name}</h2>
+    <h2 id="crudListTitle">&{'crud.list.title.'+params.get("typeCommande")}</h2>
 
     <div id="crudListSearch">
         #{crud.search /}
     </div>
 
     <div id="crudListTable">
-        #{crud.table /}
+        #{crud.table fields:['reference', 'nom', 'prenom', 'fonction', 'ligneFixe', 'courriel', 'actif', 'action']}
+            #{crud.custom 'action'}
+                #{form @show(object._key())}
+                    <p class="crudListAddTable">
+                        <input type="submit" value="&{'modify'}" />
+                    </p>
+                #{/form}
+                #{form @delete(object._key())}
+                    <p class="crudDeleteTable">
+                        <input type="submit" value="&{'delete'}" />
+                    </p>
+                #{/form}
+            #{/crud.custom}
+        #{/crud.table}
     </div>
 
     <div id="crudListPagination">
@@ -17,7 +30,7 @@
     </div>
 
     <p id="crudListAdd">
-        <a href="@{blank()}">&{'crud.add', type.modelName}</a>
+        <a href="@{blank().add('typeCommande', params.get("typeCommande"))}">&{'crud.add', type.modelName + " " +params.get("typeCommande")}</a>
     </p>
 
 </div>

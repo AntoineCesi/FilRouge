@@ -4,14 +4,12 @@ package models; /***************************************************************
  * Purpose: Defines the Class Reception
  ***********************************************************************/
 
-import play.db.jpa.Model;
-
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 import java.util.*;
 
 @Entity
-public class Reception extends Model{
+public class Reception extends ModelCustom{
 
     private float quantite;
     private Date date;

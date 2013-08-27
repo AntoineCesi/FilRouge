@@ -6,11 +6,11 @@
     <h2 id="crudListTitle">&{'crud.list.title', type.name}</h2>
 
     <div id="crudListSearch">
-    #{customCrud.search /}
+    #{crud.search /}
     </div>
 
     <div id="crudListTable">
-    #{customCrud.table fields:['batiment', 'allee', 'emplacement', 'etage', 'lot', 'quantite', 'action']}
+    #{crud.table fields:['batiment', 'allee', 'emplacement', 'etage', 'lot', 'quantite', 'action']}
         #{crud.custom 'action'}
             #{form @show(object._key())}
                 <p class="crudListAddTable">
@@ -23,7 +23,7 @@
                 </p>
             #{/form}
         #{/crud.custom}
-    #{/customCrud.table}
+    #{/crud.table}
     </div>
 
     <div id="crudListPagination">

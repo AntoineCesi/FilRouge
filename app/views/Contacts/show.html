@@ -22,10 +22,7 @@
                 #{crud.form fields:['partenaire']/}
             </div>
         </div>
-        <p class="crudButtons">
-            <input type="submit" name="_save" value="&{'crud.save', type.modelName}" />
-            <input type="submit" name="_saveAndContinue" value="&{'crud.saveAndContinue', type.modelName}" />
-        </p>
+        #{crud.groupButtonsUpdate type: type/}
     #{/form}
 
     #{form @delete(object._key())}

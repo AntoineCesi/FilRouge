@@ -3,17 +3,22 @@
 
 <div id="crudShow" class="${type.name}">
 
-    <h2 id="crudShowTitle">&{'crud.show.title', type.modelName}</h2>
+    <h2 id="crudShowTitle">&{'crud.list.title.'+params.get("typeCommande")}</h2>
 
+    <div class="objectForm">
     #{form action:@save(object._key()), enctype:'multipart/form-data'}
         #{crud.form /}
-        #{crud.groupButtonsUpdate type: type/}
+        <p class="crudButtons">
+            <input type="submit" name="_save" value="&{'crud.save', type.modelName}" />
+            <input type="submit" name="_saveAndContinue" value="&{'crud.saveAndContinue', type.modelName}" />
+        </p>
     #{/form}
+    </div>
 
     #{form @delete(object._key())}
         <p class="crudDelete">
             <input type="submit" value="&{'crud.delete', type.modelName}" />
         </p>
     #{/form}
-
+    #{crud.groupButtonsUpdate type: type/}
 </div>

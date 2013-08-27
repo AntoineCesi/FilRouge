@@ -5,14 +5,12 @@ package models;
  * Purpose: Defines the Class Service
  ***********************************************************************/
 
-import play.db.jpa.Model;
-
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import java.util.*;
 
 @Entity
-public class Service extends Model {
+public class Service extends ModelCustom {
    private String libelle;
 
    @OneToMany(mappedBy = "service")

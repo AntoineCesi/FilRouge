@@ -4,15 +4,12 @@ package models; /***************************************************************
  * Purpose: Defines the Class CoordonneePostale
  ***********************************************************************/
 
-import play.db.jpa.Model;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class CoordonneePostale extends Model{
+public class CoordonneePostale extends ModelCustom{
 
     public String adresse;
     public String cp;

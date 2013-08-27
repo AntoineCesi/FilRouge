@@ -4,15 +4,13 @@ package models; /***************************************************************
  * Purpose: Defines the Class Lot
  ***********************************************************************/
 
-import play.db.jpa.Model;
-
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import java.util.*;
 
 @Entity
-public class Lot extends Model {
+public class Lot extends ModelCustom {
    private Date dateStock;
    private String reference;
    private float quantite;

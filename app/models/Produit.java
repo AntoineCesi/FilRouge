@@ -4,14 +4,12 @@ package models; /***************************************************************
  * Purpose: Defines the Class Produit
  ***********************************************************************/
 
-import play.db.jpa.Model;
-
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import java.util.List;
 
 @Entity
-public class Produit extends Model{
+public class Produit extends ModelCustom{
 
     private String nom;
     private String reference;

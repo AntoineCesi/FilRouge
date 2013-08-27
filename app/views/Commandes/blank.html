@@ -3,7 +3,7 @@
 
 <div id="crudBlank" class="${type.name}">
 
-    <h2 id="crudBlankTitle">&{'crud.blank.title', type.modelName}</h2>
+    <h2 id="crudBlankTitle">&{'crud.list.title.'+ object.type}</h2>
 
     <div class="objectForm">
     #{form action:@create(), enctype:'multipart/form-data'}
@@ -24,11 +24,7 @@
                 </label>
             #{/crud.custom}
         #{/crud.form}
-        <p class="crudButtons">
-            <input type="submit" name="_save" value="&{'crud.save', type.modelName}" />
-            <input type="submit" name="_saveAndContinue" value="&{'crud.saveAndContinue', type.modelName}" />
-            <input type="submit" name="_saveAndAddAnother" value="&{'crud.saveAndAddAnother', type.modelName}" />
-        </p>
+        #{crud.groupButtonsSave type: type/}
     #{/form}
     </div>
 

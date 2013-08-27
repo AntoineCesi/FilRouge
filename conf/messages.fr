@@ -79,4 +79,5 @@ lot = Lot
 quantite = Quantité
 
 
-
+crud.list.title.fournisseur = Gestion des commandes fournisseur
+crud.list.title.client = Gestion des commandes client

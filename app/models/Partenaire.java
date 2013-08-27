@@ -10,7 +10,6 @@ import org.hibernate.annotations.CascadeType;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import play.data.validation.Required;
-import play.db.jpa.Model;
 import models.enums.Type;
 
 //import javax.persistence.CascadeType;
@@ -22,7 +21,7 @@ import javax.persistence.OneToMany;
 import java.util.*;
 
 @Entity
-public class Partenaire extends Model{
+public class Partenaire extends ModelCustom {
 
     @Enumerated(EnumType.STRING)
     public Type type;
@@ -34,6 +33,8 @@ public class Partenaire extends Model{
     public String reference;
 
     public boolean actif;
+
+    @Required
     public Integer capital;
 
     @OneToMany(mappedBy = "partenaire")
@@ -53,24 +54,46 @@ public class Partenaire extends Model{
      *
      * @return Value of coordonneePostales.
      */
-//    public List<CoordonneePostale> getCoordonneePostales() {
-//        if (coordonneePostales == null) coordonneePostales = new ArrayList<CoordonneePostale>();
-//        return coordonneePostales;
-//    }
+    public List<CoordonneePostale> getCoordonneePostales() {
+        if (coordonneePostales == null) coordonneePostales = new ArrayList<>();
+        return coordonneePostales;
+    }
 
     /**
      * Sets new coordonneePostales.
      *
      * @param coordonneePostales New value of coordonneePostales.
      */
-//    public void setCoordonneePostales(List<CoordonneePostale> coordonneePostales) {
-//        getCoordonneePostales().clear();
-//        if (coordonneePostales != null) {
-//            coordonneePostales.removeAll(Collections.singleton(null));
-//            for (CoordonneePostale coordonneePostale : coordonneePostales) {
-//                coordonneePostale.partenaire = this;
-//            }
-//            this.coordonneePostales.addAll(coordonneePostales);
-//        }
-//    }
+    public void setCoordonneePostales(List<CoordonneePostale> coordonneePostales) {
+        getCoordonneePostales().clear();
+        if (coordonneePostales != null) {
+            coordonneePostales.removeAll(Collections.singleton(null));
+            for (CoordonneePostale coordonneePostale : coordonneePostales) {
+                coordonneePostale.partenaire = this;
+            }
+            this.coordonneePostales.addAll(coordonneePostales);
+        }
+    }
+
+    /**
+     * Gets reference.
+     *
+     * @return Value of reference.
+     */
+    public String getReference() {
+        if (reference == null){
+            Integer countPartenaire = Integer.parseInt(Partenaire.count() +"") + 1;
+            reference = "P000000".substring(0,"P000000".length()-countPartenaire.toString().length())+countPartenaire;
+        }
+        return reference;
+    }
+
+    /**
+     * Sets new reference.
+     *
+     * @param reference New value of reference.
+     */
+    public void setReference(String reference) {
+        this.reference = reference;
+    }
 }

@@ -6,14 +6,12 @@ package models;
  * Purpose: Defines the Class Alerte
  ***********************************************************************/
 
-import play.db.jpa.Model;
-
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 import java.util.*;
 
 @Entity
-public class Alerte extends Model{
+public class Alerte extends ModelCustom{
 
    private Date date;
    private boolean visible;

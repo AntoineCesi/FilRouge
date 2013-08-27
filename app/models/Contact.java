@@ -5,13 +5,12 @@ package models; /***************************************************************
  ***********************************************************************/
 
 import play.data.validation.Required;
-import play.db.jpa.Model;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Contact extends Model {
+public class Contact extends ModelCustom {
 
     @Required
     private String nom;

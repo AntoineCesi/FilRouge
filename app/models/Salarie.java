@@ -5,13 +5,11 @@ package models;
  * Purpose: Defines the Class Salarie
  ***********************************************************************/
 
-import play.db.jpa.Model;
-
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Salarie extends Model {
+public class Salarie extends ModelCustom {
 
     private String identifiant;
     private String mdp;

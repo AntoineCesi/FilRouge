@@ -5,13 +5,11 @@ package models;
  * Purpose: Defines the Class CompositionCommande
  ***********************************************************************/
 
-import play.db.jpa.Model;
-
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 
 @Entity
-public class CompositionCommande extends Model {
+public class CompositionCommande extends ModelCustom {
 
    private float quantite;
 

@@ -6,7 +6,6 @@ package models;
  ***********************************************************************/
 
 import models.enums.Statut;
-import play.db.jpa.Model;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -15,7 +14,7 @@ import javax.persistence.OneToOne;
 import java.util.*;
 
 @Entity
-public class StatutCommande extends Model{
+public class StatutCommande extends ModelCustom{
 
    private Date statutDate;
 

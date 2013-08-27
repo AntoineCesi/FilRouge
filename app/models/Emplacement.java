@@ -4,17 +4,13 @@ package models; /***************************************************************
  * Purpose: Defines the Class Emplacement
  ***********************************************************************/
 
-import net.sf.ehcache.search.expression.NotEqualTo;
-import net.sf.oval.constraint.NotEmpty;
-import play.data.validation.Min;
 import play.data.validation.Required;
-import play.db.jpa.Model;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Emplacement extends Model{
+public class Emplacement extends ModelCustom{
 
     @Required
    private String batiment;

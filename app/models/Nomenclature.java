@@ -1,7 +1,5 @@
 package models;
 
-import play.db.jpa.Model;
-
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 
@@ -10,7 +8,7 @@ import javax.persistence.OneToOne;
  */
 
 @Entity
-public class Nomenclature extends Model {
+public class Nomenclature extends ModelCustom {
 
     @OneToOne
     private Produit produitCompose;
