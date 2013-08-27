@@ -77,6 +77,13 @@ emplacement = Emplacement
 etage = Etage
 lot = Lot
 quantite = Quantité
+unite = Unité
+couleur = Couleur
+quantiteStock = Quantité
+seuilQteMin = Seuil Minimum
+seuilQteMax = Seuil Maximum
+qteMaxEmp = Quantité Max. / Emp.
+prixUnitaire = Prix Unitaire
 
 
 crud.list.title.fournisseur = Gestion des commandes fournisseur

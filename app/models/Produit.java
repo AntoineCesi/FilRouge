@@ -4,6 +4,8 @@ package models; /***************************************************************
  * Purpose: Defines the Class Produit
  ***********************************************************************/
 
+import play.data.validation.Required;
+
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import java.util.List;
@@ -11,14 +13,18 @@ import java.util.List;
 @Entity
 public class Produit extends ModelCustom{
 
+    @Required
     private String nom;
+    @Required
     private String reference;
+    @Required
     private String unite;
-    private float quantiteStock;
-    private float seuilQteMin;
-    private float seuilQteMax;
-    private float qteMaxEmp;
-    private float prixUnitaire;
+    private Float quantiteStock;
+    private Float seuilQteMin;
+    private Float seuilQteMax;
+    @Required
+    private Float qteMaxEmp;
+    private Float prixUnitaire;
     private String couleur;
     private boolean actif;
 
@@ -50,7 +56,7 @@ public class Produit extends ModelCustom{
      *
      * @param prixUnitaire New value of prixUnitaire.
      */
-    public void setPrixUnitaire(float prixUnitaire) {
+    public void setPrixUnitaire(Float prixUnitaire) {
         this.prixUnitaire = prixUnitaire;
     }
 
@@ -95,7 +101,7 @@ public class Produit extends ModelCustom{
      *
      * @return Value of prixUnitaire.
      */
-    public float getPrixUnitaire() {
+    public Float getPrixUnitaire() {
         return prixUnitaire;
     }
 
@@ -140,7 +146,7 @@ public class Produit extends ModelCustom{
      *
      * @return Value of qteMaxEmp.
      */
-    public float getQteMaxEmp() {
+    public Float getQteMaxEmp() {
         return qteMaxEmp;
     }
 
@@ -158,7 +164,7 @@ public class Produit extends ModelCustom{
      *
      * @param qteMaxEmp New value of qteMaxEmp.
      */
-    public void setQteMaxEmp(float qteMaxEmp) {
+    public void setQteMaxEmp(Float qteMaxEmp) {
         this.qteMaxEmp = qteMaxEmp;
     }
 
@@ -167,7 +173,7 @@ public class Produit extends ModelCustom{
      *
      * @param seuilQteMax New value of seuilQteMax.
      */
-    public void setSeuilQteMax(float seuilQteMax) {
+    public void setSeuilQteMax(Float seuilQteMax) {
         this.seuilQteMax = seuilQteMax;
     }
 
@@ -185,7 +191,7 @@ public class Produit extends ModelCustom{
      *
      * @param quantiteStock New value of quantiteStock.
      */
-    public void setQuantiteStock(float quantiteStock) {
+    public void setQuantiteStock(Float quantiteStock) {
         this.quantiteStock = quantiteStock;
     }
 
@@ -194,7 +200,7 @@ public class Produit extends ModelCustom{
      *
      * @param seuilQteMin New value of seuilQteMin.
      */
-    public void setSeuilQteMin(float seuilQteMin) {
+    public void setSeuilQteMin(Float seuilQteMin) {
         this.seuilQteMin = seuilQteMin;
     }
 
@@ -212,7 +218,7 @@ public class Produit extends ModelCustom{
      *
      * @return Value of seuilQteMax.
      */
-    public float getSeuilQteMax() {
+    public Float getSeuilQteMax() {
         return seuilQteMax;
     }
 
@@ -257,7 +263,7 @@ public class Produit extends ModelCustom{
      *
      * @return Value of seuilQteMin.
      */
-    public float getSeuilQteMin() {
+    public Float getSeuilQteMin() {
         return seuilQteMin;
     }
 
@@ -284,27 +290,7 @@ public class Produit extends ModelCustom{
      *
      * @return Value of quantiteStock.
      */
-    public float getQuantiteStock() {
+    public Float getQuantiteStock() {
         return quantiteStock;
-    }
-
-    @Override
-    public String toString() {
-        return "Produit{" +
-                "nom='" + nom + '\'' +
-                ", reference='" + reference + '\'' +
-                ", unite='" + unite + '\'' +
-                ", quantiteStock=" + quantiteStock +
-                ", seuilQteMin=" + seuilQteMin +
-                ", seuilQteMax=" + seuilQteMax +
-                ", qteMaxEmp=" + qteMaxEmp +
-                ", prixUnitaire=" + prixUnitaire +
-                ", couleur='" + couleur + '\'' +
-                ", actif=" + actif +
-                ", compositionCommandes=" + compositionCommandes +
-                ", reception=" + reception +
-                ", fabrication=" + fabrication +
-                ", lot=" + lot +
-                '}';
     }
 }
