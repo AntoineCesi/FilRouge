@@ -5,10 +5,15 @@
 
     <h2 id="crudShowTitle">&{'crud.show.title', type.modelName}</h2>
 
+    <div class="objectForm">
     #{form action:@save(object._key()), enctype:'multipart/form-data'}
-        #{crud.form fields:['batiment' , 'allee', 'emplacement', 'etage', 'quantite', 'lot']/}
-        #{crud.groupButtonsUpdate type: type/}
+        #{crud.form /}
+        <p class="crudButtons">
+            <input type="submit" name="_save" value="&{'crud.save', type.modelName}" />
+            <input type="submit" name="_saveAndContinue" value="&{'crud.saveAndContinue', type.modelName}" />
+        </p>
     #{/form}
+    </div>
 
     #{form @delete(object._key())}
         <p class="crudDelete">

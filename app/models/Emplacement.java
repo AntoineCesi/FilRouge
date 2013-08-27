@@ -20,13 +20,12 @@ public class Emplacement extends ModelCustom{
    private String emplacement;
     @Required
    private Integer etage;
-    @Required
-   private float quantite;
+   private Float quantite;
 
    @OneToOne
    private Lot lot;
 
-    public Emplacement(String batiment, Integer allee, String emplacement, Integer etage, float quantite, Lot lot) {
+    public Emplacement(String batiment, Integer allee, String emplacement, Integer etage, Float quantite, Lot lot) {
         this.batiment = batiment;
         this.allee = allee;
         this.emplacement = emplacement;
@@ -40,7 +39,7 @@ public class Emplacement extends ModelCustom{
      *
      * @return Value of quantite.
      */
-    public float getQuantite() {
+    public Float getQuantite() {
         return quantite;
     }
 
@@ -76,7 +75,7 @@ public class Emplacement extends ModelCustom{
      *
      * @param quantite New value of quantite.
      */
-    public void setQuantite(float quantite) {
+    public void setQuantite(Float quantite) {
         this.quantite = quantite;
     }
 
