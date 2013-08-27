@@ -4,6 +4,6 @@ require:
     - play
     - play -> maven head
     - play -> crud
-    - secure -> secure
-
+    - play -> secure
+    - play -> cloudbees 0.2.2
 
