@@ -6,7 +6,22 @@
     <h2 id="crudShowTitle">&{'crud.show.title', 'Employés'}</h2>
 
     #{form action:@save(object._key()), enctype:'multipart/form-data'}
-        #{crud.form /}
+        <div class="row">
+            <div class="span5">
+                <legend>Informations</legend><br/>
+                #{crud.form fields:['reference', 'nom', 'prenom', 'actif']/}
+            </div>
+            <div class="span5 offset1">
+                <legend>Coordonnées</legend><br/>
+                #{crud.form fields:['ligneFixe', 'courriel']/}
+            </div>
+        </div>
+        <div class="row">
+            <div class="span9">
+                <legend>Authentification</legend><br/>
+                #{crud.form fields:['identifiant', 'mdp']/}
+            </div>
+        </div>
         #{crud.groupButtonsUpdate type: type/}
     #{/form}
 

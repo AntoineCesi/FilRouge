@@ -95,6 +95,7 @@ prixUnitaire = Prix Unitaire
 identifiant = Identifiant
 mdp = Mot de passe
 logout = Déconnection
+date = Date
 
 crud.list.title.fournisseur = Gestion des commandes fournisseur
 crud.list.title.client = Gestion des commandes client

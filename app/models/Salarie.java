@@ -5,6 +5,8 @@ package models;
  * Purpose: Defines the Class Salarie
  ***********************************************************************/
 
+import play.data.validation.Password;
+
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 
@@ -12,6 +14,8 @@ import javax.persistence.OneToOne;
 public class Salarie extends ModelCustom {
 
     public String identifiant;
+
+    @Password
     public String mdp;
     public String reference;
     public String nom;
