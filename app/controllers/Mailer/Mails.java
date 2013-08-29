@@ -3,11 +3,7 @@ package controllers.Mailer;
 import play.mvc.Mailer;
 
 /**
- * Created with IntelliJ IDEA.
- * User: jeremielapert
  * Date: 09/08/13
- * Time: 18:21
- * To change this template use File | Settings | File Templates.
  */
 public class Mails extends Mailer{
 
