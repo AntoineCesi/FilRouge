@@ -129,8 +129,56 @@
                                         <li>#{a @Services.list()}Gestion des services#{/a}</li>
                                     </ul>
                                 </li>
+
+                        #{if session.username }
+                            <li><a href="#">${session.username}</a></li>
+                        #{/if}
+                        #{else}
+                            <li><a href="#" onclick="$('#loginForm').fadeToggle();$(this).fadeToggle()">Connection</a></li>
+                        #{/else}
+
+                        #{secure.check 'admin'}
+                            <li>#{a @Secure.logout()}<i class="icon-off"></i>&{'logout'}#{/a}</li>
+                        #{/secure.check}
                         </ul>
                     </div><!--/.nav-collapse -->
+                    <div style="display: none;float: left;" id="loginForm">
+                        #{form @Secure.authenticate(),class:"form-horizontal"}
+                            #{if flash.error}
+                                <p class="error">
+                                &{flash.error}
+                                </p>
+                            #{/if}
+                            #{if flash.success}
+                                <p class="success">
+                                &{flash.success}
+                                </p>
+                            #{/if}
+
+                            <div id="username-field" class="control-group">
+                                <label class="control-label" for="username">&{'secure.username'}</label>
+                                <div class="controls">
+                                    <input type="text" name="username" id="username" value="${flash.username}" />
+                                </div>
+                            </div>
+                            <div id="password-field" class="control-group">
+                                <label class="control-label" for="inputPassword">&{'secure.password'}</label>
+                                <div class="controls">
+                                    <input type="password" name="password" id="inputPassword" placeholder="Password" value="">
+                                </div>
+                            </div>
+                            <div id="remember-field" class="control-group">
+                                <div class="controls">
+                                    <label class="checkbox">
+                                        <input type="checkbox" name="remember" id="remember" value="true" ${flash.remember ? 'checked="true"' : ''} />
+                                    &{'secure.remember'}
+                                    </label>
+                                    <input type="submit" id="signin" value="&{'secure.signin'}" class="btn"/>
+                                </div>
+                            </div>
+
+                        #{/form}
+                    </div>
                 </div>
             </div>
         </div>
