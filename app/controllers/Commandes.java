@@ -3,12 +3,14 @@ package controllers;
 import models.enums.Type;
 import play.db.Model;
 import play.exceptions.TemplateNotFoundException;
+import play.mvc.With;
 
 import java.util.List;
 
 /**
  * Date: 10/08/13
  */
+@With(Secure.class)
 public class Commandes extends CRUD {
 
     public static void list(int page, String search, String searchFields, String orderBy, String order, Type typeCommande) {

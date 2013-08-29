@@ -4,12 +4,14 @@ import models.Partenaire;
 import play.data.binding.Binder;
 import play.db.Model;
 import play.exceptions.TemplateNotFoundException;
+import play.mvc.With;
 
 import java.lang.reflect.Constructor;
 
 /**
  * Date: 10/08/13
  */
+@With(Secure.class)
 public class Partenaires extends CRUD {
 
     public static void create() throws Exception {
@@ -60,5 +62,22 @@ public class Partenaires extends CRUD {
             redirect(request.controller + ".list");
         }
         redirect(request.controller + ".show", partenaire._key());
+    }
+
+    public static void delete(String id) throws Exception {
+        ObjectType type = ObjectType.get(getControllerClass());
+        notFoundIfNull(type);
+        Partenaire partenaire = Partenaire.findById(Long.parseLong(id));
+        notFoundIfNull(partenaire);
+        try {
+            partenaire.deleted = true;
+            partenaire.deleteCoordonneePostales();
+            partenaire.merge();
+        } catch (Exception e) {
+            flash.error(play.i18n.Messages.get("crud.delete.error", type.modelName));
+            redirect(request.controller + ".show", partenaire._key());
+        }
+        flash.success(play.i18n.Messages.get("crud.deleted", type.modelName));
+        redirect(request.controller + ".list");
     }
 }
