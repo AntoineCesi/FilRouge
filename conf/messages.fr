@@ -52,6 +52,14 @@ crud.help.range=Between %d and %d
 validation.required = Obligatoire
 validation.invalid = Valeur Incorrecte
 
+secure.title=
+secure.username = Identifiant
+secure.password = Mot de passe
+secure.signin = Connection
+secure.remember=Se souvenir de moi
+secure.error=Identifiant ou mot de passe inconnu.
+secure.logout=Vous êtes maintenant déconnecté.
+
 delete = Supprimer
 modify = Modifier
 
@@ -84,7 +92,9 @@ seuilQteMin = Seuil Minimum
 seuilQteMax = Seuil Maximum
 qteMaxEmp = Quantité Max. / Emp.
 prixUnitaire = Prix Unitaire
-
+identifiant = Identifiant
+mdp = Mot de passe
+logout = Déconnection
 
 crud.list.title.fournisseur = Gestion des commandes fournisseur
 crud.list.title.client = Gestion des commandes client
