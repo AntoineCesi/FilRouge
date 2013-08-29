@@ -41,8 +41,7 @@ public class Partenaire extends ModelCustom {
     public List<Commande> commandes;
 
     @OneToMany(mappedBy = "partenaire", fetch = FetchType.EAGER)
-    @Cascade({CascadeType.ALL})
-    @OnDelete(action = OnDeleteAction.CASCADE)
+    @Cascade({CascadeType.PERSIST, CascadeType.MERGE})
     public List<CoordonneePostale> coordonneePostales;
 
     @OneToMany(mappedBy = "partenaire")
@@ -95,5 +94,11 @@ public class Partenaire extends ModelCustom {
      */
     public void setReference(String reference) {
         this.reference = reference;
+    }
+
+    public void deleteCoordonneePostales(){
+        for (CoordonneePostale coordonneePostale : getCoordonneePostales()) {
+            coordonneePostale.deleted = true;
+        }
     }
 }
