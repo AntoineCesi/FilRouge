@@ -1,0 +1,6 @@
+Salarie(admin):
+    identifiant: admin
+    mdp: filrouge
+    nom: admin
+    prenom: admin
+    fonction: admin
