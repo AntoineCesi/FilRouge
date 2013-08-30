@@ -13,7 +13,12 @@ import java.util.Date;
 public class Security extends Secure.Security {
 
     static boolean authenticate(String username, String password) {
-       return Salarie.connect(username, password) != null;
+       Salarie salarie = Salarie.connect(username, password);
+       boolean allowed =  Salarie.connect(username, password) != null;
+       if(allowed) {
+           session.put("userId",salarie.id);
+       }
+       return allowed;
     }
 
     /**
@@ -45,6 +50,11 @@ public class Security extends Secure.Security {
      */
     static void onCheckFailed(String profile) {
         forbidden();
+    }
+
+    static boolean check(String profile) {
+        Salarie salarie = Salarie.find("byIdentifiant", connected()).first();
+        return profile.equals(salarie.roleSalarie.toString());
     }
 
 }

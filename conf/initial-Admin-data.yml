@@ -1,6 +1,23 @@
 Salarie(admin):
     identifiant: admin
     mdp: filrouge
+    roleSalarie: admin
     nom: admin
     prenom: admin
     fonction: admin
+
+Salarie(commercial):
+    identifiant: commercial
+    mdp: filrouge
+    roleSalarie: commercial
+    nom: commercial
+    prenom: commercial
+    fonction: commercial
+
+Salarie(logistique):
+    identifiant: logistique
+    mdp: filrouge
+    roleSalarie: logistique
+    nom: logistique
+    prenom: logistique
+    fonction: logistique
