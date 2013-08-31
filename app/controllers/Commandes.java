@@ -5,6 +5,7 @@ import play.db.Model;
 import play.exceptions.TemplateNotFoundException;
 import play.mvc.With;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -23,10 +24,16 @@ public class Commandes extends CRUD {
 
         Long count = type.count(search, searchFields, (String) request.args.get("where"));
         Long totalCount = type.count(null, null, (String) request.args.get("where"));
+//        try {
+//            render(type, objects, count, totalCount, page, orderBy, order);
+//        } catch (TemplateNotFoundException e) {
+//            render("CRUD/list.html", type, objects, count, totalCount, page, orderBy, order);
+//        }
+
         try {
-            render(type, objects, count, totalCount, page, orderBy, order);
-        } catch (TemplateNotFoundException e) {
-            render("CRUD/list.html", type, objects, count, totalCount, page, orderBy, order);
+            Application.generate("tags/crud/table.html", true);
+        } catch (IOException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
     }
 

@@ -14,7 +14,7 @@ public class Security extends Secure.Security {
 
     static boolean authenticate(String username, String password) {
        Salarie salarie = Salarie.connect(username, password);
-       boolean allowed =  Salarie.connect(username, password) != null;
+       boolean allowed =  salarie != null;
        if(allowed) {
            session.put("userId",salarie.id);
        }

@@ -7,6 +7,7 @@ package models;
 
 import models.enums.RoleSalarie;
 import play.data.validation.Password;
+import play.libs.Crypto;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -39,4 +40,15 @@ public class Salarie extends ModelCustom {
     }
 
 
+    /**
+     * Sets new mdp.
+     *
+     * @param mdp New value of mdp.
+     */
+    public void setMdp(String mdp) {
+        this.mdp = Crypto.passwordHash(mdp);
+    }
+    public boolean hasMdp(String mdp) {
+        return Crypto.passwordHash(mdp).equals(this.mdp);
+    }
 }

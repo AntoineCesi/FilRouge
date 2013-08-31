@@ -9,7 +9,7 @@
     </div>
 
     <div id="crudListTable">
-        #{crud.table fields:['reference', 'nom', 'prenom', 'fonction', 'ligneFixe', 'courriel', 'actif', 'action']}
+        #{crud.table fields:['reference', 'type']}
             #{crud.custom 'action'}
                 #{form @show(object._key())}
                     <p class="crudListAddTable">
