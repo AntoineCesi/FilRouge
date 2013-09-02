@@ -9,7 +9,22 @@
         <div class="row">
             <div class="span5">
                 <legend>Informations</legend><br/>
-                #{crud.form fields:['reference', 'nom', 'prenom', 'actif']/}
+                #{crud.form fields:['reference', 'nom', 'prenom', 'actif', 'service']}
+                    #{crud.custom "reference"}
+                        #{field 'object.reference'}
+                            <label for="${field.id}">
+                            &{'reference'}
+                            </label>
+                            <p class="offset1">
+                            ${field?.value}
+                            </p>
+                            <input id="${field.id}" class="${field.errorClass}" type="hidden" name="${field.name}" value="${field?.value?.escape()?.raw()}"/>
+                            #{ifError field.name}
+                                <span class="error">${field.error.raw()}</span>
+                            #{/ifError}
+                        #{/field}
+                    #{/crud.custom}
+                #{/crud.form}
             </div>
             <div class="span5 offset1">
                 <legend>Coordonnées</legend><br/>

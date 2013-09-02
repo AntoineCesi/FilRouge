@@ -6,7 +6,7 @@
     <h2 id="crudBlankTitle">&{'crud.blank.title', type.modelName}</h2>
 
     #{form action:@create(), enctype:'multipart/form-data'}
-        #{crud.form /}
+        #{crud.form fields:['libelle']/}
         #{crud.groupButtonsSave type: type/}
     #{/form}
 

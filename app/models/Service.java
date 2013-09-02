@@ -11,13 +11,13 @@ import java.util.*;
 
 @Entity
 public class Service extends ModelCustom {
-   private String libelle;
+   public String libelle;
 
    @OneToMany(mappedBy = "service")
-   private List<Salarie> salarie;
+   public List<Salarie> salarie;
 
    @OneToMany(mappedBy = "service")
-   private List<Alerte> alerte;
+   public List<Alerte> alerte;
 
     public Service(String libelle, List<Salarie> salarie, List<Alerte> alerte) {
         this.libelle = libelle;
@@ -81,10 +81,6 @@ public class Service extends ModelCustom {
 
     @Override
     public String toString() {
-        return "Service{" +
-                "libelle='" + libelle + '\'' +
-                ", salarie=" + salarie +
-                ", alerte=" + alerte +
-                '}';
+        return libelle;
     }
 }

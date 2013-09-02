@@ -33,7 +33,7 @@ public class Salarie extends ModelCustom {
     public RoleSalarie roleSalarie;
 
     @OneToOne
-    private Service service;
+    public Service service;
 
     public static Salarie connect(String identifiant, String mdp) {
         return find("byIdentifiantAndMdp", identifiant, mdp).first();
@@ -50,5 +50,27 @@ public class Salarie extends ModelCustom {
     }
     public boolean hasMdp(String mdp) {
         return Crypto.passwordHash(mdp).equals(this.mdp);
+    }
+
+    /**
+     * Gets reference.
+     *
+     * @return Value of reference.
+     */
+    public String getReference() {
+        if (reference == null){
+            Integer countSalarie = Integer.parseInt(Salarie.count() +"") + 1;
+            reference = "S000000".substring(0,"S000000".length()-countSalarie.toString().length())+countSalarie;
+        }
+        return reference;
+    }
+
+    /**
+     * Sets new reference.
+     *
+     * @param reference New value of reference.
+     */
+    public void setReference(String reference) {
+        this.reference = reference;
     }
 }
