@@ -3,29 +3,65 @@
 
 <div id="crudBlank" class="${type.name}">
 
-    <h2 id="crudBlankTitle">&{'crud.list.title.'+ object.type}</h2>
+    <h2 id="crudBlankTitle">&{'crud.blank.title.'+ params.get("typeCommande")}</h2>
 
-    <div class="objectForm">
     #{form action:@create(), enctype:'multipart/form-data'}
-        #{crud.form}
-            #{crud.custom 'receptions'}
-                <label for="receptions">
-                    &{'receptions'}
-                </label>
-            #{/crud.custom}
-            #{crud.custom 'compositionCommandes'}
-                <label for="compositionCommandes">
-                    &{'compositionCommandes'}
-                </label>
-            #{/crud.custom}
-            #{crud.custom 'statutCommandes'}
-                <label for="statutCommandes">
-                    &{'statutCommandes'}
-                </label>
+        #{crud.form fields:['reference' , 'type', 'partenaire']}
+            #{crud.custom "reference"}
+                #{field 'object.reference'}
+                    <label for="${field.id}">
+                        &{'reference'}
+                    </label>
+                    <p class="offset1">
+                        ${field?.value}
+                    </p>
+                    <input id="${field.id}" class="${field.errorClass}" type="hidden" name="${field.name}" value="${field?.value?.escape()?.raw()}"/>
+                    #{ifError field.name}
+                        <span class="error">${field.error.raw()}</span>
+                    #{/ifError}
+                #{/field}
             #{/crud.custom}
         #{/crud.form}
+        <a id="add-btn-commande" class="btn btn-success" style="color:white">
+            +
+        </a>
+        <table id="CompositionCommande">
+            <thead>
+            <td>Produit</td>
+            <td>Quantité</td>
+            <td></td>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
         #{crud.groupButtonsSave type: type/}
     #{/form}
-    </div>
-
 </div>
+<link rel="stylesheet" media="screen" href="@{'/public/js/bootstrap-editable-1.4.6/css/bootstrap-editable.css'}">
+<script src="@{'/public/js/bootstrap-editable-1.4.6/js/bootstrap-editable.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+<script id="entry-template" type="text/x-handlebars-template">
+    <tr>
+        <td>
+            <a href="#" id="idProduit" data-type="text" data-original-title="Saisir Produit"
+               class="editable editable-click" style="display: inline;"></a>
+            <input type="hidden" name="object.compositionCommande[{{indexTr}}].produit" value="">
+        </td>
+        <td>
+            <a href="#" id="idQuantite" data-type="text" data-original-title="Saisir Quantite"
+               class="editable editable-click" style="display: inline;"></a>
+            <input type="hidden" name="object.compositionCommande[{{indexTr}}].quantite" value="">
+        </td>
+        <td>
+            <a class="btn btn-danger" onclick='$(this).parentsUntil("tbody", "tr").remove();' style="color:white;">
+                -
+            </a>
+        </td>
+    </tr>
+</script>
+<script src="@{'/public/js/table.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+<script type="text/javascript">
+    $(function() {
+        editableTable('CompositionCommande');
+    });
+</script>

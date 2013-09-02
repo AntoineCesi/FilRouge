@@ -37,6 +37,10 @@ public class Commande extends ModelCustom{
      * @return Value of reference.
      */
     public String getReference() {
+        if (reference == null){
+            Integer countReference = Integer.parseInt(Commande.count() +"") + 1;
+            reference = "C000000".substring(0,7-countReference.toString().length())+countReference;
+        }
         return reference;
     }
 

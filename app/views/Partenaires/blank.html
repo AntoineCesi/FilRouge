@@ -31,10 +31,10 @@
             </div>
         </div>
         <legend>Coordonnées</legend><br/>
-        <a id="add-btn" class="btn btn-success" style="color:white">
+        <a id="add-btn-adresse" class="btn btn-success" style="color:white">
             +
         </a>
-        <table id="addresses">
+        <table id="adresses">
             <thead>
                 <td>Adresse</td>
                 <td>CP</td>
@@ -81,10 +81,10 @@
         </td>
     </tr>
 </script>
-<script src="@{'/public/js/partenaire.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+<script src="@{'/public/js/table.js'}" type="text/javascript" charset="${_response_encoding}"></script>
 <script type="text/javascript">
     $(function() {
-        editableTableAdsresses();
+        editableTable('adresses');
     });
 </script>
 
