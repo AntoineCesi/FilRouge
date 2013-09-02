@@ -13,6 +13,7 @@ import java.util.Date;
 public class Security extends Secure.Security {
 
     static boolean authenticate(String username, String password) {
+       password = Crypto.passwordHash(password);
        Salarie salarie = Salarie.connect(username, password);
        boolean allowed =  salarie != null;
        if(allowed) {

@@ -179,6 +179,10 @@ public class Contact extends ModelCustom {
      * @return Value of reference.
      */
     public String getReference() {
+        if (reference == null){
+            Integer countContact = Integer.parseInt(Contact.count() + "") + 1;
+            reference = "C000000".substring(0, "C000000".length() - countContact.toString().length()) + countContact;
+        }
         return reference;
     }
 

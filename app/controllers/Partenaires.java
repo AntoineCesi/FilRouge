@@ -57,6 +57,7 @@ public class Partenaires extends CRUD {
             }
         }
         partenaire.merge();
+        partenaire._save();
         flash.success(play.i18n.Messages.get("crud.saved", type.modelName));
         if (params.get("_save") != null) {
             redirect(request.controller + ".list");

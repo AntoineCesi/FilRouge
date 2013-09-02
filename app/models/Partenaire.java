@@ -5,14 +5,11 @@ package models;
  * Purpose: Defines the Class Partenaire
  ***********************************************************************/
 
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
+//import org.hibernate.annotations.CascadeType;
 import play.data.validation.Required;
 import models.enums.Type;
 
-//import javax.persistence.CascadeType;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -40,8 +37,7 @@ public class Partenaire extends ModelCustom {
     @OneToMany(mappedBy = "partenaire")
     public List<Commande> commandes;
 
-    @OneToMany(mappedBy = "partenaire", fetch = FetchType.EAGER)
-    @Cascade({CascadeType.PERSIST, CascadeType.MERGE})
+    @OneToMany(mappedBy = "partenaire", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH})
     public List<CoordonneePostale> coordonneePostales;
 
     @OneToMany(mappedBy = "partenaire")
@@ -100,5 +96,10 @@ public class Partenaire extends ModelCustom {
         for (CoordonneePostale coordonneePostale : getCoordonneePostales()) {
             coordonneePostale.deleted = true;
         }
+    }
+
+    @Override
+    public String toString() {
+        return nom ;
     }
 }

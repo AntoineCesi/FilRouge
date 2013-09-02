@@ -24,17 +24,17 @@ public class Commandes extends CRUD {
 
         Long count = type.count(search, searchFields, (String) request.args.get("where"));
         Long totalCount = type.count(null, null, (String) request.args.get("where"));
-//        try {
-//            render(type, objects, count, totalCount, page, orderBy, order);
-//        } catch (TemplateNotFoundException e) {
-//            render("CRUD/list.html", type, objects, count, totalCount, page, orderBy, order);
-//        }
-
         try {
-            Application.generate("tags/crud/table.html", true);
-        } catch (IOException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            render(type, objects, count, totalCount, page, orderBy, order);
+        } catch (TemplateNotFoundException e) {
+            render("CRUD/list.html", type, objects, count, totalCount, page, orderBy, order);
         }
+
+//        try {
+//            Application.generate("tags/crud/table.html", true);
+//        } catch (IOException e) {
+//            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+//        }
     }
 
 }
