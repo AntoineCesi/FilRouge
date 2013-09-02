@@ -1,5 +1,7 @@
 package models;
 
+import play.data.validation.Required;
+
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 
@@ -16,7 +18,8 @@ public class Nomenclature extends ModelCustom {
     @OneToOne
     private Produit produitComposant;
 
-    private float quantiteComposant;
+    @Required
+    private Float quantiteComposant;
 
 
     /**
@@ -33,7 +36,7 @@ public class Nomenclature extends ModelCustom {
      *
      * @return Value of quantiteComposant.
      */
-    public float getQuantiteComposant() {
+    public Float getQuantiteComposant() {
         return quantiteComposant;
     }
 
@@ -60,7 +63,7 @@ public class Nomenclature extends ModelCustom {
      *
      * @param quantiteComposant New value of quantiteComposant.
      */
-    public void setQuantiteComposant(float quantiteComposant) {
+    public void setQuantiteComposant(Float quantiteComposant) {
         this.quantiteComposant = quantiteComposant;
     }
 

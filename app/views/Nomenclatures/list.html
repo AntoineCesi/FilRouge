@@ -10,7 +10,20 @@
     </div>
 
     <div id="crudListTable">
-        #{crud.table /}
+    #{crud.table fields:['produitCompose', 'produitComposant', 'quantiteComposant', 'action']}
+        #{crud.custom 'action'}
+            #{form @show(object._key())}
+                <p class="crudListAddTable">
+                    <input type="submit" value="&{'modify'}" />
+                </p>
+            #{/form}
+            #{form @delete(object._key())}
+                <p class="crudDeleteTable">
+                    <input type="submit" value="&{'delete'}" />
+                </p>
+            #{/form}
+        #{/crud.custom}
+    #{/crud.table}
     </div>
 
     <div id="crudListPagination">

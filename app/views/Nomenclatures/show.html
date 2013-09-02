@@ -7,11 +7,8 @@
 
     <div class="objectForm">
     #{form action:@save(object._key()), enctype:'multipart/form-data'}
-        #{crud.form /}
-        <p class="crudButtons">
-            <input type="submit" name="_save" value="&{'crud.save', type.modelName}" />
-            <input type="submit" name="_saveAndContinue" value="&{'crud.saveAndContinue', type.modelName}" />
-        </p>
+        #{crud.form fields:['produitCompose' ,'produitComposant' ,'quantiteComposant']/}
+        #{crud.groupButtonsSave type: type/}
     #{/form}
     </div>
 

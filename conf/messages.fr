@@ -97,6 +97,9 @@ mdp = Mot de passe
 logout = Déconnection
 date = Date
 typeArticle = Type d'article
+produitCompose = Produit Composé
+produitComposant = Produit Composant
+quantiteComposant = Quantité pour 1
 
 crud.list.title.fournisseur = Gestion des commandes fournisseur
 crud.list.title.client = Gestion des commandes client
