@@ -10,7 +10,7 @@
     </div>
 
     <div id="crudListTable">
-    #{crud.table fields:['reference' , 'nom', 'unite', 'couleur', 'quantiteStock', 'seuilQteMin', 'seuilQteMax', 'qteMaxEmp', 'prixUnitaire', 'actif', 'action']}
+    #{crud.table fields:['reference', 'typeArticle', 'nom', 'unite', 'couleur', 'quantiteStock', 'seuilQteMin', 'seuilQteMax', 'qteMaxEmp', 'prixUnitaire', 'actif', 'action']}
         #{crud.custom 'action'}
             #{form @show(object._key())}
                 <p class="crudListAddTable">

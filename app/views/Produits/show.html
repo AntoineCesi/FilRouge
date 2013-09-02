@@ -7,11 +7,23 @@
 
     <div class="objectForm">
     #{form action:@save(object._key()), enctype:'multipart/form-data'}
-        #{crud.form fields:['reference' , 'nom', 'unite', 'couleur', 'quantiteStock', 'seuilQteMin', 'seuilQteMax', 'qteMaxEmp', 'prixUnitaire', 'actif']/}
-        <p class="crudButtons">
-            <input type="submit" name="_save" value="&{'crud.save', type.modelName}" />
-            <input type="submit" name="_saveAndContinue" value="&{'crud.saveAndContinue', type.modelName}" />
-        </p>
+        #{crud.form fields:['reference', 'typeArticle' , 'nom', 'unite', 'couleur', 'quantiteStock', 'seuilQteMin', 'seuilQteMax', 'qteMaxEmp', 'prixUnitaire', 'actif']}
+        #{crud.custom "reference"}
+            #{field 'object.reference'}
+                <label for="${field.id}">
+                &{'reference'}
+                </label>
+                <p class="offset1">
+                ${field?.value}
+                </p>
+                <input id="${field.id}" class="${field.errorClass}" type="hidden" name="${field.name}" value="${field?.value?.escape()?.raw()}"/>
+                #{ifError field.name}
+                    <span class="error">${field.error.raw()}</span>
+                #{/ifError}
+            #{/field}
+        #{/crud.custom}
+    #{/crud.form}
+        #{crud.groupButtonsSave type: type/}
     #{/form}
     </div>
 

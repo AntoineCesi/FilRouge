@@ -4,9 +4,13 @@ package models; /***************************************************************
  * Purpose: Defines the Class Produit
  ***********************************************************************/
 
+import models.enums.Type;
+import models.enums.TypeArticle;
 import play.data.validation.Required;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.OneToMany;
 import java.util.List;
 
@@ -17,6 +21,8 @@ public class Produit extends ModelCustom{
     private String nom;
     @Required
     private String reference;
+    @Enumerated(EnumType.STRING)
+    public TypeArticle typeArticle;
     @Required
     private String unite;
     private Float quantiteStock;
@@ -93,6 +99,10 @@ public class Produit extends ModelCustom{
      * @return Value of reference.
      */
     public String getReference() {
+        if (reference == null){
+            Integer countProduit = Integer.parseInt(Produit.count() +"") + 1;
+            reference = "A000000".substring(0,"A000000".length()-countProduit.toString().length())+countProduit;
+        }
         return reference;
     }
 
