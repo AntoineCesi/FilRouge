@@ -1,0 +1,41 @@
+#{extends 'generate.html' /}
+<div class="offset7">
+    <address>
+        <strong>
+            ${commande?.partenaire?.nom}
+        </strong>
+    </address>
+    <address>
+        #{list items:commande?.partenaire?.coordonneePostales, as:'coordonneePostale'}
+            #{if coordonneePostale_isFirst}
+               ${coordonneePostale?.adresse}<br>
+               ${coordonneePostale?.cp}<br>
+               ${coordonneePostale?.ville}<br>
+               ${coordonneePostale?.pays}<br>
+               ${coordonneePostale?.libelle}
+            #{/if}
+        #{/list}
+    </address>
+</div>
+<div class="">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <td>Liste des produits commandés </td>
+                <td>&{'quantite'}</td>
+                <td>&{'prixUnitaire'}</td>
+                <td>Total</td>
+            </tr>
+        </thead>
+        <tbody>
+            #{list items: commande?.compositionCommandes ,as:'compositionCommande'}#{/list}
+            <tr>
+                <td>${compositionCommande?.produit?.nom}</td>
+                <td>${compositionCommande?.quantite}</td>
+                <td>${compositionCommande?.produit?.prixUnitaire}</td>
+                <td>${compositionCommande?.quantite}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+Total général à faire

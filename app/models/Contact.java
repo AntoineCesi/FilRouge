@@ -13,21 +13,21 @@ import javax.persistence.OneToOne;
 public class Contact extends ModelCustom {
 
     @Required
-    private String nom;
+    public String nom;
     @Required
-    private String prenom;
-    private String service;
+    public String prenom;
+    public String service;
     @Required
-    private String reference;
-    private String fonction;
-    private String telPort;
-    private String ligneFixe;
-    private String fax;
-    private String courriel;
-    private boolean actif;
+    public String reference;
+    public String fonction;
+    public String telPort;
+    public String ligneFixe;
+    public String fax;
+    public String courriel;
+    public boolean actif;
 
     @OneToOne
-    private Partenaire partenaire;
+    public Partenaire partenaire;
 
     public Contact(long id, String nom, String prenom, String service, String reference, String fonction,
                    String telPort, String ligneFixe, String fax, String courriel,

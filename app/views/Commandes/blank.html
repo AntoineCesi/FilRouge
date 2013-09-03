@@ -3,7 +3,7 @@
 
 <div id="crudBlank" class="${type.name}">
 
-    <h2 id="crudBlankTitle">&{'crud.blank.title.'+ params.get("typeCommande")}</h2>
+    <h2 id="crudBlankTitle">&{'crud.blank.title.'+ typeCommande}</h2>
 
     #{form action:@create(), enctype:'multipart/form-data'}
         #{crud.form fields:['reference' , 'type', 'partenaire']}
@@ -20,6 +20,9 @@
                         <span class="error">${field.error.raw()}</span>
                     #{/ifError}
                 #{/field}
+            #{/crud.custom}
+            #{crud.custom "type"}
+                <input id="${field.id}" type="hidden" name="object.type" value="${typeCommande}"/>
             #{/crud.custom}
         #{/crud.form}
         <a id="add-btn-commande" class="btn btn-success" style="color:white">

@@ -1,7 +1,6 @@
 #{extends 'CRUD/layout.html' /}
 #{set title:messages.get('crud.list.title', type.name) /}
 <div id="crudList" class="${type.name}">
-
     <h2 id="crudListTitle">&{'crud.list.title.'+params.get("typeCommande")}</h2>
 
     <div id="crudListSearch">
@@ -9,7 +8,7 @@
     </div>
 
     <div id="crudListTable">
-        #{crud.table fields:['reference', 'type']}
+        #{crud.table fields:['reference', 'type','action']}
             #{crud.custom 'action'}
                 #{form @show(object._key())}
                     <p class="crudListAddTable">
@@ -21,6 +20,13 @@
                         <input type="submit" value="&{'delete'}" />
                     </p>
                 #{/form}
+                #{if object.type == object.type.fournisseur}
+                <p class="crudListInfo">
+                    <input type="submit"
+                           onclick="window.open('@@{Application.generate(object._key())}', '_blank');"
+                           value="&{'print'}"/>
+                </p>
+                #{/if}
             #{/crud.custom}
         #{/crud.table}
     </div>
@@ -30,7 +36,7 @@
     </div>
 
     <p id="crudListAdd">
-        <a href="@{blank().add('typeCommande', params.get("typeCommande"))}">&{'crud.add', type.modelName + " " +params.get("typeCommande")}</a>
+        <a href="@{blank().add('typeCommande', typeCommande)}">&{'crud.add', type.modelName + " " +params.get("typeCommande")}</a>
     </p>
 
 </div>

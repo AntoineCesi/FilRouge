@@ -1,20 +1,13 @@
 package controllers;
-
+import static play.modules.pdf.PDF.renderPDF;
+import java.io.IOException;
+import models.Commande;
 import org.apache.commons.lang.time.DurationFormatUtils;
 import org.apache.commons.lang.time.StopWatch;
-import play.*;
-import play.data.validation.Validation;
-import play.modules.pdf.PDF;
-import play.mvc.*;
-
-import java.io.IOException;
-import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import models.*;
-
-import static play.modules.pdf.PDF.renderPDF;
+import play.Logger;
+import play.modules.pdf.PDF.Options;
+import play.mvc.Controller;
+import play.mvc.Finally;
 
 public class Application extends Controller {
     private static StopWatch watch;
@@ -34,46 +27,22 @@ public class Application extends Controller {
      * @param html optionally specifies whether the result of this action should be displayed as HTML (to ease debugging) or not
      * @throws IOException in case of error
      */
-    public static void generate(String id, Boolean html) throws IOException {
+    public static void generate(long id, Boolean html) throws IOException {
         notFoundIfNull(id);
 
         Logger.info("Starting generation of documentation section '%s'", id);
 
-        // Builds the HTML for the requested Textile page
-//        String textile = getTextile(id);
-        String content = "";//toHTML(textile);
-        String title = "";//getTitle(textile);
+        watch = new StopWatch();
+        watch.start();
 
-        // Handles the special case of the homepage which will trigger the generation of the whole documentation
-        if (id.equals("home")) {
-            // Adds each page linked from any numbered list on the homepage, like for example:
-            //
-            //   # "Installation guide":install
-            //
-            final Pattern pattern = Pattern.compile("^#\\s*\"[^\"]+\":([^#\\s]+)", Pattern.MULTILINE);
-//            final Matcher matcher = pattern.matcher(textile);
+        Commande commande = Commande.findById(id);
 
-//            while (matcher.find()) {
-//                id = matcher.group(1);
-//
-//                if (!id.startsWith("http://") && !id.startsWith("/")) {
-//                    content += toHTML(getTextile(id));
-//                }
-//            }
-        }
+        Options options = new Options();
+        options.FOOTER = "<span style='font-size: 8pt;font-style:italic;color: #666;'>Generated with Play! Framework PDF Module</span><span style=\" color: rgb(141, 172, 38);float: right;font-size: 8pt;\">Page <pagenumber>/<pagecount></span>";
+        options.filename = "install" + ".pdf";
 
-//        if ((html != null) && html) {
-//            render(content, title);
-//        } else {
-            watch = new StopWatch();
-            watch.start();
-
-            PDF.Options options = new PDF.Options();
-            options.FOOTER = "<span style='font-size: 8pt;font-style:italic;color: #666;'>Generated with Play! Framework PDF Module</span><span style=\" color: rgb(141, 172, 38);float: right;font-size: 8pt;\">Page <pagenumber>/<pagecount></span>";
-            options.filename = id + ".pdf";
-
-            renderPDF(id,content, options, title);
-//        }
+        renderPDF("Application/commande.html", options, commande);
+//        renderPDF(content, options, title, commande);
     }
 
     /**

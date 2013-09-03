@@ -21,10 +21,10 @@ $('#add-btn-commande').click(function() {
     editableTable('CompositionCommande');
 });
 
-$('#add-btn-adresse').click(function() {
-    var indexTr = {indexTr:$('#' + 'adresses' + ">tbody>tr").size(),parentId:$("#idObject").val()};
-    $('#' + 'adresses' + ">tbody").append(template(indexTr));
-    editableTable('adresses');
+$('#add-btn').click(function() {
+    var indexTr = {indexTr:$('#' + 'addresses' + ">tbody>tr").size(),parentId:$("#idObject").val()};
+    $('#' + 'addresses' + ">tbody").append(template(indexTr));
+    editableTable('addresses');
 });
 
 
