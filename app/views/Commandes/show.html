@@ -3,22 +3,95 @@
 
 <div id="crudShow" class="${type.name}">
 
-    <h2 id="crudShowTitle">&{'crud.list.title.'+params.get("typeCommande")}</h2>
+    <h2 id="crudShowTitle">&{'crud.list.title.'+typeCommande}</h2>
 
-    <div class="objectForm">
     #{form action:@save(object._key()), enctype:'multipart/form-data'}
-        #{crud.form /}
-        <p class="crudButtons">
-            <input type="submit" name="_save" value="&{'crud.save', type.modelName}" />
-            <input type="submit" name="_saveAndContinue" value="&{'crud.saveAndContinue', type.modelName}" />
-        </p>
+       #{crud.form fields:['reference' , 'type', 'partenaire']}
+            #{crud.custom "reference"}
+                #{field 'object.reference'}
+                    <label for="${field.id}">
+                    &{'reference'}
+                    </label>
+                    <p class="offset1">
+                    ${field?.value}
+                    </p>
+                    <input id="${field.id}" class="${field.errorClass}" type="hidden" name="${field.name}" value="${field?.value?.escape()?.raw()}"/>
+                    #{ifError field.name}
+                        <span class="error">${field.error.raw()}</span>
+                    #{/ifError}
+                #{/field}
+            #{/crud.custom}
+            #{crud.custom "type"}
+                <input id="${field.id}" type="hidden" name="object.type" value="${typeCommande}"/>
+            #{/crud.custom}
+        #{/crud.form}
+        <a id="add-btn-commande" class="btn btn-success" style="color:white">
+            +
+        </a>
+        <table id="CompositionCommande">
+            <thead>
+            <td>Produit</td>
+            <td>Quantité</td>
+            <td></td>
+            </thead>
+            <tbody>
+                #{list items:object?.compositionCommandes, as:'compositionCommande'}
+                    <tr>
+                        <input type="hidden" name="object.compositionCommandes[${compositionCommande_index-1}].id" value="${compositionCommande.id}">
+                        <input type="hidden" name="object.compositionCommandes[${compositionCommande_index-1}].commande.id" value="${object._key()}">
+                        <td>
+                            <a href="#" id="idProduit" data-type="select" data-name="produit" data-source="/filrouge/produits/produits" data-original-title="Saisir Produit"
+                               class="editable editable-click" style="display: inline;"></a>
+                            <input type="hidden" name="object.compositionCommandes[${compositionCommande_index-1}].produit.id" value="${compositionCommande.produit.id}">
+                        </td>
+                        <td>
+                            <a href="#" id="idQuantite" data-type="text" data-original-title="Saisir Quantite"
+                               class="editable editable-click" style="display: inline;"></a>
+                            <input type="hidden" name="object.compositionCommandes[${compositionCommande_index-1}].quantite" value="${compositionCommande.quantite}">
+                        </td>
+                        <td>
+                            <a class="btn btn-danger" onclick='$(this).parentsUntil("tbody", "tr").remove();'
+                               style="color:white">
+                                -
+                            </a>
+                        </td>
+                    </tr>
+                #{/list}
+            </tbody>
+        </table>
+        #{crud.groupButtonsUpdate type: type/}
     #{/form}
-    </div>
 
     #{form @delete(object._key())}
         <p class="crudDelete">
             <input type="submit" value="&{'crud.delete', type.modelName}" />
         </p>
     #{/form}
-    #{crud.groupButtonsUpdate type: type/}
 </div>
+<link rel="stylesheet" media="screen" href="@{'/public/js/bootstrap-editable-1.4.6/css/bootstrap-editable.css'}">
+<script src="@{'/public/js/bootstrap-editable-1.4.6/js/bootstrap-editable.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+<script id="entry-template" type="text/x-handlebars-template">
+    <tr>
+        <td>
+            <a href="#" id="idProduit" data-type="select" data-name="produit" data-source="/filrouge/produits/produits" data-original-title="Saisir Produit"
+               class="editable editable-click" style="display: inline;"></a>
+            <input type="hidden" name="object.compositionCommande[{{indexTr}}].produit.id" value="">
+        </td>
+        <td>
+            <a href="#" id="idQuantite" data-type="text" data-original-title="Saisir Quantite"
+               class="editable editable-click" style="display: inline;"></a>
+            <input type="hidden" name="object.compositionCommande[{{indexTr}}].quantite" value="">
+        </td>
+        <td>
+            <a class="btn btn-danger" onclick='$(this).parentsUntil("tbody", "tr").remove();' style="color:white;">
+                -
+            </a>
+        </td>
+    </tr>
+</script>
+<script src="@{'/public/js/table.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+<script type="text/javascript">
+    $(function() {
+        editableTable('CompositionCommande');
+    });
+</script>

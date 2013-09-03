@@ -46,9 +46,9 @@
 <script id="entry-template" type="text/x-handlebars-template">
     <tr>
         <td>
-            <a href="#" id="idProduit" data-type="text" data-original-title="Saisir Produit"
+            <a href="#" id="idProduit" data-type="select" data-name="produit" data-source="/filrouge/produits/produits" data-original-title="Saisir Produit"
                class="editable editable-click" style="display: inline;"></a>
-            <input type="hidden" name="object.compositionCommande[{{indexTr}}].produit" value="">
+            <input type="hidden" name="object.compositionCommande[{{indexTr}}].produit.id" value="">
         </td>
         <td>
             <a href="#" id="idQuantite" data-type="text" data-original-title="Saisir Quantite"

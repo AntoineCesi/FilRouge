@@ -43,8 +43,9 @@ public class Commandes extends CRUD {
     public static void show(String id) throws Exception {
         ObjectType type = ObjectType.get(getControllerClass());
         notFoundIfNull(type);
-        Model object = type.findById(id);
+        Commande object = (Commande) type.findById(id);
         notFoundIfNull(object);
+        renderArgs.put("typeCommande", object.getType());
         try {
             render(type, object);
         } catch (TemplateNotFoundException e) {

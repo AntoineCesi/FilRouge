@@ -145,13 +145,6 @@ public class Commande extends ModelCustom{
 
     @Override
     public String toString() {
-        return "Commande{" +
-                "reference='" + reference + '\'' +
-                ", type=" + type +
-                ", receptions=" + receptions +
-                ", compositionCommandes=" + compositionCommandes +
-                ", partenaire=" + partenaire +
-                ", statutCommandes=" + statutCommandes +
-                '}';
+        return reference;
     }
 }
