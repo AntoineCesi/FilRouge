@@ -1,6 +1,6 @@
 package models; /***********************************************************************
  * Module:  Lot.java
- * Author:  antoi_000
+ * Author:  Antoine
  * Purpose: Defines the Class Lot
  ***********************************************************************/
 
