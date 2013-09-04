@@ -303,4 +303,10 @@ public class Produit extends ModelCustom{
     public Float getQuantiteStock() {
         return quantiteStock;
     }
+
+    @Override
+    public String toString() {
+        return reference +
+                " - " + nom;
+    }
 }

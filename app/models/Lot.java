@@ -4,6 +4,7 @@ package models; /***************************************************************
  * Purpose: Defines the Class Lot
  ***********************************************************************/
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -11,22 +12,22 @@ import java.util.*;
 
 @Entity
 public class Lot extends ModelCustom {
-   private Date dateStock;
-   private String reference;
-   private float quantite;
+   public Date dateStock;
+   public String reference;
+   public float quantite;
 
    @OneToOne
-   private Produit produit;
+   public Produit produit;
 
-   @OneToMany(mappedBy = "lot")
-   private List<Emplacement> emplacement;
+   @OneToMany(mappedBy = "lot", cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH})
+   public List<Emplacement> emplacements;
 
-    public Lot(Date dateStock, String reference, float quantite, Produit produit, List<Emplacement> emplacement) {
+    public Lot(Date dateStock, String reference, float quantite, Produit produit, List<Emplacement> emplacements) {
         this.dateStock = dateStock;
         this.reference = reference;
         this.quantite = quantite;
         this.produit = produit;
-        this.emplacement = emplacement;
+        this.emplacements = emplacements;
     }
 
     /**
@@ -93,21 +94,21 @@ public class Lot extends ModelCustom {
     }
 
     /**
-     * Sets new emplacement.
+     * Sets new emplacements.
      *
-     * @param emplacement New value of emplacement.
+     * @param emplacements New value of emplacement.
      */
-    public void setEmplacement(List<Emplacement> emplacement) {
-        this.emplacement = emplacement;
+    public void setEmplacements(List<Emplacement> emplacements) {
+        this.emplacements = emplacements;
     }
 
     /**
-     * Gets emplacement.
+     * Gets emplacements.
      *
      * @return Value of emplacement.
      */
-    public List<Emplacement> getEmplacement() {
-        return emplacement;
+    public List<Emplacement> getEmplacements() {
+        return emplacements;
     }
 
     /**
@@ -116,17 +117,15 @@ public class Lot extends ModelCustom {
      * @return Value of reference.
      */
     public String getReference() {
+        if (reference == null){
+            Integer countLot = Integer.parseInt(Lot.count() +"") + 1;
+            reference = "L000000".substring(0,"L000000".length()-countLot.toString().length())+countLot;
+        }
         return reference;
     }
 
     @Override
     public String toString() {
-        return "Lot{" +
-                "dateStock=" + dateStock +
-                ", reference='" + reference + '\'' +
-                ", quantite=" + quantite +
-                ", produit=" + produit +
-                ", emplacement=" + emplacement +
-                '}';
+        return reference;
     }
 }

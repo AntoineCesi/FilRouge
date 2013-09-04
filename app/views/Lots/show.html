@@ -5,20 +5,123 @@
 
     <h2 id="crudShowTitle">&{'crud.show.title', type.modelName}</h2>
 
-    <div class="objectForm">
     #{form action:@save(object._key()), enctype:'multipart/form-data'}
-        #{crud.form /}
-        <p class="crudButtons">
-            <input type="submit" name="_save" value="&{'crud.save', type.modelName}" />
-            <input type="submit" name="_saveAndContinue" value="&{'crud.saveAndContinue', type.modelName}" />
-        </p>
+        #{crud.form fields:['reference','dateStock' , 'quantite', 'produit', 'emplacements']}
+            #{crud.custom "reference"}
+                #{field 'object.reference'}
+                    <label for="${field.id}">
+                    &{'reference'}
+                    </label>
+                    <p class="offset1">
+                    ${field?.value}
+                    </p>
+                    <input id="${field.id}" class="${field.errorClass}" type="hidden" name="${field.name}" value="${field?.value?.escape()?.raw()}"/>
+                    #{ifError field.name}
+                        <span class="error">${field.error.raw()}</span>
+                    #{/ifError}
+                #{/field}
+            #{/crud.custom}
+        #{/crud.form}
+        <a id="add-btn-commande" class="btn btn-success" style="color:white">
+            +
+        </a>
+        <table id="CompositionCommande">
+            <thead>
+            <td>&{'batiment'}</td>
+            <td>&{'allee'}</td>
+            <td>&{'emplacement'}</td>
+            <td>&{'etage'}</td>
+            <td>&{'quantite'}</td>
+            <td></td>
+            </thead>
+            <tbody>
+                #{list items:object?.emplacements, as:'emplacement'}
+                <tr>
+                    <input type="hidden" name="object.emplacements[${emplacement_index-1}].id" value="${emplacement.id}">
+                    <input type="hidden" name="object.emplacements[${emplacement_index-1}].commande.id" value="${object._key()}">
+                    <td>
+                        <a href="#" id="idBatiment" data-type="text" data-original-title="Saisir Bâtiment"
+                           class="editable editable-click" style="display: inline;">${emplacement.batiment}</a>
+                        <input type="hidden" name="object.emplacements[${emplacement_index-1}].batiment" value="${emplacement.batiment}">
+                    </td>
+                    <td>
+                        <a href="#" id="idAllee" data-type="text" data-original-title="Saisir Allée"
+                           class="editable editable-click" style="display: inline;">${emplacement.allee}</a>
+                        <input type="hidden" name="object.emplacements[${emplacement_index-1}].allee" value="${emplacement.allee}">
+                    </td>
+                    <td>
+                        <a href="#" id="idEmplacement" data-type="text" data-original-title="Saisir Emplacement"
+                           class="editable editable-click" style="display: inline;">${emplacement.emplacement}</a>
+                        <input type="hidden" name="object.emplacements[${emplacement_index-1}].emplacement" value="${emplacement.emplacement}">
+                    </td>
+                    <td>
+                        <a href="#" id="idEtage" data-type="text" data-original-title="Saisir Etage"
+                           class="editable editable-click" style="display: inline;">${emplacement.etage}</a>
+                        <input type="hidden" name="object.emplacements[${emplacement_index-1}].etage" value="${emplacement.etage}">
+                    </td>
+                    <td>
+                        <a href="#" id="idQuantite" data-type="text" data-original-title="Saisir Quantite"
+                           class="editable editable-click" style="display: inline;">${emplacement.quantite}</a>
+                        <input type="hidden" name="object.emplacements[${emplacement_index-1}].quantite" value="${emplacement.quantite}">
+                    </td>
+                    <td>
+                        <a class="btn btn-danger" onclick='$(this).parentsUntil("tbody", "tr").remove();'
+                           style="color:white">
+                            -
+                        </a>
+                    </td>
+                </tr>
+                #{/list}
+            </tbody>
+        </table>
+        #{crud.groupButtonsUpdate type: type/}
     #{/form}
-    </div>
 
     #{form @delete(object._key())}
         <p class="crudDelete">
             <input type="submit" value="&{'crud.delete', type.modelName}" />
         </p>
     #{/form}
-
 </div>
+<link rel="stylesheet" media="screen" href="@{'/public/js/bootstrap-editable-1.4.6/css/bootstrap-editable.css'}">
+<script src="@{'/public/js/bootstrap-editable-1.4.6/js/bootstrap-editable.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+<script id="entry-template" type="text/x-handlebars-template">
+    <tr>
+        <td>
+            <a href="#" id="idBatiment" data-type="text" data-original-title="Saisir Bâtiment"
+               class="editable editable-click" style="display: inline;"></a>
+            <input type="hidden" name="object.emplacements[{{indexTr}}].batiment" value="">
+        </td>
+        <td>
+            <a href="#" id="idAllee" data-type="text" data-original-title="Saisir Allée"
+               class="editable editable-click" style="display: inline;"></a>
+            <input type="hidden" name="object.emplacements[{{indexTr}}].allee" value="">
+        </td>
+        <td>
+            <a href="#" id="idEmplacement" data-type="text" data-original-title="Saisir Emplacement"
+               class="editable editable-click" style="display: inline;"></a>
+            <input type="hidden" name="object.emplacements[{{indexTr}}].emplacement" value="">
+        </td>
+        <td>
+            <a href="#" id="idEtage" data-type="text" data-original-title="Saisir Etage"
+               class="editable editable-click" style="display: inline;"></a>
+            <input type="hidden" name="object.emplacements[{{indexTr}}].etage" value="">
+        </td>
+        <td>
+            <a href="#" id="idQuantite" data-type="text" data-original-title="Saisir Quantite"
+               class="editable editable-click" style="display: inline;"></a>
+            <input type="hidden" name="object.emplacements[{{indexTr}}].quantite" value="">
+        </td>
+        <td>
+            <a class="btn btn-danger" onclick='$(this).parentsUntil("tbody", "tr").remove();' style="color:white;">
+                -
+            </a>
+        </td>
+    </tr>
+</script>
+<script src="@{'/public/js/table.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+<script type="text/javascript">
+    $(function() {
+        editableTable('CompositionCommande');
+    });
+</script>

@@ -13,13 +13,13 @@ import javax.persistence.OneToOne;
 public class Nomenclature extends ModelCustom {
 
     @OneToOne
-    private Produit produitCompose;
+    public Produit produitCompose;
 
     @OneToOne
-    private Produit produitComposant;
+    public Produit produitComposant;
 
     @Required
-    private Float quantiteComposant;
+    public Float quantiteComposant;
 
 
     /**

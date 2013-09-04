@@ -7,23 +7,26 @@ package models; /***************************************************************
 import play.data.validation.Required;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
 public class Emplacement extends ModelCustom{
 
-    @Required
-   private String batiment;
-    @Required
-   private Integer allee;
-    @Required
-   private String emplacement;
-    @Required
-   private Integer etage;
-   private Float quantite;
+   @Required
+   public String batiment;
+   @Required
+   public Integer allee;
+   @Required
+   public String emplacement;
+   @Required
+   public Integer etage;
+   public Float quantite;
 
-   @OneToOne
-   private Lot lot;
+   @JoinColumn(name = "lot_id", referencedColumnName = "id")
+   @ManyToOne
+   public Lot lot;
 
     public Emplacement(String batiment, Integer allee, String emplacement, Integer etage, Float quantite, Lot lot) {
         this.batiment = batiment;

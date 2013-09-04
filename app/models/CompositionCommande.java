@@ -18,7 +18,7 @@ public class CompositionCommande extends ModelCustom {
    @OneToOne
    public Produit produit;
 
-    @JoinColumn(name = "commande_id", referencedColumnName = "id")
+   @JoinColumn(name = "commande_id", referencedColumnName = "id")
    @ManyToOne
    public Commande commande;
 
