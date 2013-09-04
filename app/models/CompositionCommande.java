@@ -6,18 +6,21 @@ package models;
  ***********************************************************************/
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
 public class CompositionCommande extends ModelCustom {
 
-   private float quantite;
+   public float quantite;
 
    @OneToOne
-   private Produit produit;
+   public Produit produit;
 
-   @OneToOne
-   private Commande commande;
+    @JoinColumn(name = "commande_id", referencedColumnName = "id")
+   @ManyToOne
+   public Commande commande;
 
 
     /**

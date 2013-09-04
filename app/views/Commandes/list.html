@@ -1,7 +1,7 @@
 #{extends 'CRUD/layout.html' /}
 #{set title:messages.get('crud.list.title', type.name) /}
 <div id="crudList" class="${type.name}">
-    <h2 id="crudListTitle">&{'crud.list.title.'+params.get("typeCommande")}</h2>
+    <h2 id="crudListTitle">&{'crud.list.title.'+typeCommande}</h2>
 
     <div id="crudListSearch">
         #{crud.search /}
@@ -36,7 +36,7 @@
     </div>
 
     <p id="crudListAdd">
-        <a href="@{blank().add('typeCommande', typeCommande)}">&{'crud.add', type.modelName + " " +params.get("typeCommande")}</a>
+        <a href="@{blank().add('typeCommande', typeCommande)}">&{'crud.add', type.modelName + " " +typeCommande}</a>
     </p>
 
 </div>

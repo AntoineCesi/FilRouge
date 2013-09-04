@@ -13,22 +13,22 @@ import java.util.*;
 @Entity
 public class Commande extends ModelCustom{
 
-   private String reference;
+    public String reference;
 
     @Enumerated(EnumType.STRING)
     public Type type;
 
    @OneToMany(mappedBy = "commande")
-   private List<Reception> receptions;
+   public List<Reception> receptions;
 
-   @OneToMany(mappedBy="commande")
-   private List<CompositionCommande> compositionCommandes;
+   @OneToMany(mappedBy="commande", cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH})
+   public List<CompositionCommande> compositionCommandes;
 
    @OneToOne
-   private Partenaire partenaire;
+   public Partenaire partenaire;
 
    @OneToMany(mappedBy = "commande")
-   private List<StatutCommande> statutCommandes;
+   public List<StatutCommande> statutCommandes;
 
 
     /**
@@ -104,7 +104,14 @@ public class Commande extends ModelCustom{
      * @param compositionCommandes New value of compositionCommandes.
      */
     public void setCompositionCommandes(List<CompositionCommande> compositionCommandes) {
-        this.compositionCommandes = compositionCommandes;
+        getCompositionCommandes().clear();
+        if (compositionCommandes != null) {
+            compositionCommandes.removeAll(Collections.singleton(null));
+            for (CompositionCommande compositionCommande : compositionCommandes) {
+                compositionCommande.commande = this;
+            }
+            this.compositionCommandes.addAll(compositionCommandes);
+        }
     }
 
     /**
@@ -140,6 +147,7 @@ public class Commande extends ModelCustom{
      * @return Value of compositionCommandes.
      */
     public List<CompositionCommande> getCompositionCommandes() {
+        if (compositionCommandes == null) compositionCommandes = new ArrayList<>();
         return compositionCommandes;
     }
 
