@@ -88,12 +88,12 @@ public class Commandes extends CRUD {
         object.save();
         flash.success(play.i18n.Messages.get("crud.created", type.modelName));
         if (params.get("_save") != null) {
-            redirect(request.controller + ".list");
+            list(0,"","","","",object.getType());
         }
         if (params.get("_saveAndAddAnother") != null) {
-            redirect(request.controller + ".blank");
+            render(request.controller.replace(".", "/") + "/blank.html", type, object);
         }
-        redirect(request.controller + ".show", object._key());
+        show(object._key().toString());
     }
 
     public static void save(String id) throws Exception {
@@ -116,8 +116,23 @@ public class Commandes extends CRUD {
         commande._save();
         flash.success(play.i18n.Messages.get("crud.saved", type.modelName));
         if (params.get("_save") != null) {
-            redirect(request.controller + ".list");
+            list(0,"","","","",commande.getType());
         }
-        redirect(request.controller + ".show", commande._key());
+        show(commande._key().toString());
+    }
+
+    public static void delete(String id) throws Exception {
+        ObjectType type = ObjectType.get(getControllerClass());
+        notFoundIfNull(type);
+        Model object = type.findById(id);
+        notFoundIfNull(object);
+        try {
+            object._delete();
+        } catch (Exception e) {
+            flash.error(play.i18n.Messages.get("crud.delete.error", type.modelName));
+            redirect(request.controller + ".show", object._key());
+        }
+        flash.success(play.i18n.Messages.get("crud.deleted", type.modelName));
+        redirect(request.controller + ".list");
     }
 }

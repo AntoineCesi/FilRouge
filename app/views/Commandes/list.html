@@ -15,7 +15,7 @@
                         <input type="submit" value="&{'modify'}" />
                     </p>
                 #{/form}
-                #{form @delete(object._key())}
+                #{form @delete(object._key()).add('typeCommande', typeCommande)}
                     <p class="crudDeleteTable">
                         <input type="submit" value="&{'delete'}" />
                     </p>

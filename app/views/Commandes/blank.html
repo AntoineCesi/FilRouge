@@ -38,7 +38,12 @@
 
             </tbody>
         </table>
-        #{crud.groupButtonsSave type: type/}
+        <p class="crudButtons">
+            #{a @Commandes.list().add('typeCommande', typeCommande), class:"btn btn-danger", style:'color:white'}&{'crud.cancel', type.modelName} #{/a}
+            <input type="submit" name="_save" value="&{'crud.save', type.modelName}" class="btn btn-success"/>
+            <input type="submit" name="_saveAndContinue" value="&{'crud.saveAndContinue', type.modelName}" class="btn"/>
+            <input type="submit" name="_saveAndAddAnother" value="&{'crud.saveAndAddAnother', type.modelName}" class="btn"/>
+        </p>
     #{/form}
 </div>
 <link rel="stylesheet" media="screen" href="@{'/public/js/bootstrap-editable-1.4.6/css/bootstrap-editable.css'}">

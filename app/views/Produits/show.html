@@ -5,7 +5,6 @@
 
     <h2 id="crudShowTitle">&{'crud.show.title', type.modelName}</h2>
 
-    <div class="objectForm">
     #{form action:@save(object._key()), enctype:'multipart/form-data'}
         #{crud.form fields:['reference', 'typeArticle' , 'nom', 'unite', 'couleur', 'quantiteStock', 'seuilQteMin', 'seuilQteMax', 'qteMaxEmp', 'prixUnitaire', 'actif']}
         #{crud.custom "reference"}
@@ -25,7 +24,6 @@
     #{/crud.form}
         #{crud.groupButtonsSave type: type/}
     #{/form}
-    </div>
 
     #{form @delete(object._key())}
         <p class="crudDelete">

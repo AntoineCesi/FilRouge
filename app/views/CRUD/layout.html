@@ -7,7 +7,7 @@
     <body id="crud">
         #{if request.actionMethod != 'index'}
             <div id="crudBreadcrumb">
-                #{crud.navigation /}
+                #{crud.navigation typeCommande:typeCommande/}
             </div>
         #{/if}
 

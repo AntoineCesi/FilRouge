@@ -33,7 +33,7 @@
                 <td>${compositionCommande?.produit?.nom}</td>
                 <td>${compositionCommande?.quantite}</td>
                 <td>${compositionCommande?.produit?.prixUnitaire}</td>
-                <td>${compositionCommande?.quantite}</td>
+                <td>${compositionCommande?.quantite * compositionCommande?.produit?.prixUnitaire}</td>
             </tr>
         </tbody>
     </table>

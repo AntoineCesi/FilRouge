@@ -6,6 +6,8 @@ package models;
  ***********************************************************************/
 
 import models.enums.Type;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.*;
@@ -21,7 +23,8 @@ public class Commande extends ModelCustom{
    @OneToMany(mappedBy = "commande")
    public List<Reception> receptions;
 
-   @OneToMany(mappedBy="commande", cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH})
+   @OneToMany(mappedBy="commande",fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH})
+   @Fetch(value = FetchMode.SUBSELECT)
    public List<CompositionCommande> compositionCommandes;
 
    @OneToOne
