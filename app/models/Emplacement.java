@@ -28,14 +28,14 @@ public class Emplacement extends ModelCustom{
    @ManyToOne
    public Lot lot;
 
-    public Emplacement(String batiment, Integer allee, String emplacement, Integer etage, Float quantite, Lot lot) {
-        this.batiment = batiment;
-        this.allee = allee;
-        this.emplacement = emplacement;
-        this.etage = etage;
-        this.quantite = quantite;
-        this.lot = lot;
-    }
+//    public Emplacement(String batiment, Integer allee, String emplacement, Integer etage, Float quantite, Lot lot) {
+//        this.batiment = batiment;
+//        this.allee = allee;
+//        this.emplacement = emplacement;
+//        this.etage = etage;
+//        this.quantite = quantite;
+//        this.lot = lot;
+//    }
 
     /**
      * Gets quantite.

@@ -21,3 +21,35 @@ Salarie(logistique):
     nom: logistique
     prenom: logistique
     fonction: logistique
+
+Partenaire(1):
+     type: Client
+     nom: partenaire1
+     noSIRET:
+     reference: P000001
+     actif: true
+     capital: 1
+
+Partenaire(2):
+     type: Client
+     nom: partenaire2
+     noSIRET:
+     reference: P000002
+     actif: true
+     capital: 2
+
+Partenaire(3):
+     type: Client
+     nom: partenaire3
+     noSIRET:
+     reference: P000003
+     actif: true
+     capital: 3
+
+Partenaire(4):
+     type: Client
+     nom: partenaire4
+     noSIRET: true
+     reference: P000004
+     actif: true
+     capital: 4

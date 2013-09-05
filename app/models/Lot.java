@@ -6,6 +6,7 @@ package models; /***************************************************************
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import java.util.*;
@@ -19,16 +20,16 @@ public class Lot extends ModelCustom {
    @OneToOne
    public Produit produit;
 
-   @OneToMany(mappedBy = "lot", cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH})
+   @OneToMany(mappedBy = "lot",fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH})
    public List<Emplacement> emplacements;
 
-    public Lot(Date dateStock, String reference, float quantite, Produit produit, List<Emplacement> emplacements) {
-        this.dateStock = dateStock;
-        this.reference = reference;
-        this.quantite = quantite;
-        this.produit = produit;
-        this.emplacements = emplacements;
-    }
+//    public Lot(Date dateStock, String reference, float quantite, Produit produit, List<Emplacement> emplacements) {
+//        this.dateStock = dateStock;
+//        this.reference = reference;
+//        this.quantite = quantite;
+//        this.produit = produit;
+//        this.emplacements = emplacements;
+//    }
 
     /**
      * Gets quantite.
@@ -99,7 +100,14 @@ public class Lot extends ModelCustom {
      * @param emplacements New value of emplacement.
      */
     public void setEmplacements(List<Emplacement> emplacements) {
-        this.emplacements = emplacements;
+        getEmplacements().clear();
+        if (emplacements != null) {
+            emplacements.removeAll(Collections.singleton(null));
+            for (Emplacement emplacement : emplacements) {
+                emplacement.lot = this;
+            }
+            this.emplacements.addAll(emplacements);
+        }
     }
 
     /**
@@ -108,6 +116,7 @@ public class Lot extends ModelCustom {
      * @return Value of emplacement.
      */
     public List<Emplacement> getEmplacements() {
+        if (emplacements == null) emplacements = new ArrayList<>();
         return emplacements;
     }
 
