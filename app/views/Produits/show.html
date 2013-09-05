@@ -4,7 +4,7 @@
 <div id="crudShow" class="${type.name}">
 
     <h2 id="crudShowTitle">&{'crud.show.title', type.modelName}</h2>
-
+    <img src="@{QrCodeGeneration.qrCodeGeneration(object.reference+"\t"+object.nom)}" style="float:right">
     #{form action:@save(object._key()), enctype:'multipart/form-data'}
         #{crud.form fields:['reference', 'typeArticle' , 'nom', 'unite', 'couleur', 'quantiteStock', 'seuilQteMin', 'seuilQteMax', 'qteMaxEmp', 'prixUnitaire', 'actif']}
         #{crud.custom "reference"}

@@ -1,8 +1,11 @@
 package controllers;
 
 import models.Produit;
+import play.db.Model;
+import play.exceptions.TemplateNotFoundException;
 import play.mvc.With;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,4 +26,19 @@ public class Produits extends CRUD{
         }
         renderJSON(objectSelects);
     }
+
+
+
+    public static void show(String id) throws Exception {
+        ObjectType type = ObjectType.get(getControllerClass());
+        notFoundIfNull(type);
+        Model object = type.findById(id);
+        notFoundIfNull(object);
+        try {
+            render(type, object);
+        } catch (TemplateNotFoundException e) {
+            render("CRUD/show.html", type, object);
+        }
+    }
+
 }
