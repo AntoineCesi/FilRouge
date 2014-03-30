@@ -16,3 +16,6 @@ GET     /public/                                staticDir:public
 
 # Catch all
 *       /{controller}/{action}                  {controller}.{action}
+
+GET /export/    WebService.exportData
+POST /inport/    WebService.importData
